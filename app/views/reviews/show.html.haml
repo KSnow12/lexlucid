@@ -1,0 +1,14 @@
+.page-header
+  = link_to reviews_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_review_path(@review), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show review
+
+%dl.dl-horizontal
+  %dt Lawyer:
+  %dd= @review.lawyer
+  %dt Body:
+  %dd= @review.body

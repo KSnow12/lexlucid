@@ -1,0 +1,31 @@
+= form_for @bullet_point, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @bullet_point.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@bullet_point.errors.count, "error")} prohibited this bullet_point from being saved:"
+
+      %ul
+        - @bullet_point.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :human_title, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :human_title, class: 'form-control'
+  .form-group
+    = f.label :human_description, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :human_description, class: 'form-control'
+  .form-group
+    = f.label :lawyer_title, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :lawyer_title, class: 'form-control'
+  .form-group
+    = f.label :lawyer_description, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :lawyer_description, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'

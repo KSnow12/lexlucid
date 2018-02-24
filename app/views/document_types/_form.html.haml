@@ -1,0 +1,19 @@
+= form_for @document_type, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @document_type.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@document_type.errors.count, "error")} prohibited this document_type from being saved:"
+
+      %ul
+        - @document_type.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :category, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :category, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'

@@ -1,0 +1,12 @@
+.page-header
+  = link_to document_types_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_document_type_path(@document_type), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show document_type
+
+%dl.dl-horizontal
+  %dt Category:
+  %dd= @document_type.category

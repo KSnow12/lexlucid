@@ -1,0 +1,22 @@
+.page-header
+  = link_to new_document_type_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Document type
+  %h1 Listing document_types
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Category
+        %th
+        %th
+        %th
+
+    %tbody
+      - @document_types.each do |document_type|
+        %tr
+          %td= document_type.category
+          %td= link_to 'Show', document_type
+          %td= link_to 'Edit', edit_document_type_path(document_type)
+          %td= link_to 'Destroy', document_type, data: { confirm: 'Are you sure?' }, method: :delete

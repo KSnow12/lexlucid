@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180224181635) do
+ActiveRecord::Schema.define(version: 20180224184623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bullet_points", force: :cascade do |t|
+    t.text "human_title"
+    t.text "human_description"
+    t.text "lawyer_title"
+    t.text "lawyer_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "document_types", force: :cascade do |t|
+    t.text "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "documents", force: :cascade do |t|
     t.text "name"
@@ -22,6 +37,31 @@ ActiveRecord::Schema.define(version: 20180224181635) do
     t.date "published_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "document_type_id"
+    t.index ["document_type_id"], name: "index_documents_on_document_type_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "score"
+    t.text "description"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "bullet_point_id"
+    t.index ["bullet_point_id"], name: "index_ratings_on_bullet_point_id"
+    t.index ["review_id"], name: "index_ratings_on_review_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_reviews_on_document_id"
+  end
+
+  add_foreign_key "documents", "document_types"
+  add_foreign_key "ratings", "bullet_points"
+  add_foreign_key "ratings", "reviews"
+  add_foreign_key "reviews", "documents"
 end
