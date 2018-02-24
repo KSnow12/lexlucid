@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root :to => 'documents#index'
+
   resources :bullet_points
   resources :ratings
   resources :reviews
