@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    redirect_to root_path if logged_in?
+
     @user = User.new
   end
 

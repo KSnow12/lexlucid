@@ -29,8 +29,9 @@
           %ul.nav.navbar-nav
             %li.active
               = link_to "Documents", documents_path
-            %li
-              = link_to 'Attorney Registration', new_user_path
+            - unless logged_in?
+              %li
+                = link_to 'Attorney Registration', new_user_path
 
           %span.navbar-text{style: 'float: right'}
             - if logged_in?
