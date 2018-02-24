@@ -24,13 +24,20 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Project name", "#", class: "navbar-brand"
+          = link_to "LexLucid", "/", class: "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
               = link_to "Documents", documents_path
             %li
               = link_to 'Attorney Registration', new_user_path
+
+          %span.navbar-text{style: 'float: right'}
+            - if logged_in?
+              = current_user.email
+            - else
+              = link_to 'Login', '/login'
+
     .container
       .row
         - flash.each do |name, msg|
