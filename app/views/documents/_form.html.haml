@@ -1,31 +1,26 @@
 = form_for @document, html: { class: "form-horizontal", role: "form" } do |f|
-  -if @document.errors.any?
-    .alert.alert-danger.alert-dismissable{role: "alert"}
-      %button.close{type: "button", data: {dismiss: "alert"} }
-        %span{aria: {hidden: "true"} } &times;
-        %span.sr-only Close
-      %h4= "#{pluralize(@document.errors.count, "error")} prohibited this document from being saved:"
-
-      %ul
-        - @document.errors.full_messages.each do |msg|
-          %li= msg
+  = render partial: "shared/error_messages", locals: { object: @document }
 
   .form-group
     = f.label :name, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_area :name, class: 'form-control'
+      = f.text_field :name, class: "form-control"
   .form-group
     = f.label :url, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_area :url, class: 'form-control'
+      = f.text_field :url, class: "form-control"
+  .form-group
+    = f.label :document_type_id, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.collection_select :document_type_id, DocumentType.order(:category), :id, :category, {}, class: "form-control"
   .form-group
     = f.label :description, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_area :description, class: 'form-control'
+      = f.text_area :description, class: "form-control"
   .form-group
     = f.label :published_on, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.date_select :published_on, class: 'form-control'
+      = f.date_select :published_on, class: "form-control"
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit "Add Document", class: 'btn btn-primary'
+      = f.submit class: 'btn btn-primary'

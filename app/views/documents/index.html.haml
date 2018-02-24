@@ -10,7 +10,7 @@
       %tr
         %th Name
         %th Url
-        %th Description
+        %th Type
         %th Published on
         %th
         %th
@@ -21,7 +21,7 @@
         %tr
           %td= document.name
           %td= document.url
-          %td= document.description
+          %td= document.document_type.category
           %td= document.published_on
           %td= link_to 'Show', document
           %td= link_to 'Edit', edit_document_path(document)

@@ -1,14 +1,5 @@
 = form_for @rating, html: { class: "form-horizontal", role: "form" } do |f|
-  -if @rating.errors.any?
-    .alert.alert-danger.alert-dismissable{role: "alert"}
-      %button.close{type: "button", data: {dismiss: "alert"} }
-        %span{aria: {hidden: "true"} } &times;
-        %span.sr-only Close
-      %h4= "#{pluralize(@rating.errors.count, "error")} prohibited this rating from being saved:"
-
-      %ul
-        - @rating.errors.full_messages.each do |msg|
-          %li= msg
+  = render partial: "shared/error_messages", locals: { object: @rating }
 
   .form-group
     = f.label :bullet_point, class: 'col-sm-2 control-label'
