@@ -1,18 +1,18 @@
-%p#notice= notice
+.page-header
+  = link_to documents_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_document_path(@document), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show document
 
-%p
-  %b Name:
-  = @document.name
-%p
-  %b Url:
-  = @document.url
-%p
-  %b Description:
-  = @document.description
-%p
-  %b Published on:
-  = @document.published_on
-
-= link_to 'Edit', edit_document_path(@document)
-\|
-= link_to 'Back', documents_path
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @document.name
+  %dt Url:
+  %dd= @document.url
+  %dt Description:
+  %dd= @document.description
+  %dt Published on:
+  %dd= @document.published_on
