@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   root to: "documents#index"
   resources :bullet_points
-  resources :ratings, shallow: true do
-    resources :reviews
-  end
+  resources :ratings
   #resources :reviews
   resources :document_types
-  resources :documents
+  resources :reviews, only: [:index]
+  resources :documents, shallow: true do
+    resources :reviews, except: [:index]
+  end
   resources :users
 end
