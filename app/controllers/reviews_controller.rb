@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
   def create
     @document = Document.find(params[:document_id])
     @review = @document.reviews.build(review_params)
+    @review.user = current_user
 
     respond_to do |format|
       if @review.save
@@ -74,6 +75,14 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:lawyer_id, :body)
+      params.require(:review).permit(
+        :lawyer_id,
+        :body,
+        ratings_attributes: [
+          :score,
+          :bullet_point_id,
+          :description
+        ]
+      )
     end
 end
