@@ -28,7 +28,7 @@ class BulletPointsController < ApplicationController
 
     respond_to do |format|
       if @bullet_point.save
-        format.html { redirect_to @bullet_point, notice: 'Bullet point was successfully created.' }
+        format.html { redirect_to bullet_points_path, notice: 'Bullet point was successfully created.' }
         format.json { render :show, status: :created, location: @bullet_point }
       else
         format.html { render :new }

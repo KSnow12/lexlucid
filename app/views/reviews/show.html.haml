@@ -9,6 +9,6 @@
 
 %dl.dl-horizontal
   %dt Lawyer:
-  %dd= @review.lawyer
+  %dd= "#{@review.user.try(:first_name)} #{@review.user.try(:last_name)}"
   %dt Body:
   %dd= @review.body

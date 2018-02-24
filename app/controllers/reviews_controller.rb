@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    @document = Document.find(params[:document_id])
+    @review = @document.reviews.build
     5.times do
       @review.ratings.build
     end
@@ -27,7 +28,8 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @document = Document.find(params[:document_id])
+    @review = @document.reviews.build(review_params)
 
     respond_to do |format|
       if @review.save
