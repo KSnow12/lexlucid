@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'haml-rails'
+gem 'bootstrap-generators', '~> 3.3.4'
 gem 'sass'
 
 group :development, :test do

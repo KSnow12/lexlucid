@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @document.name
+%p
+  %b Url:
+  = @document.url
+%p
+  %b Description:
+  = @document.description
+%p
+  %b Published on:
+  = @document.published_on
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', documents_path
