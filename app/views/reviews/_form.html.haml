@@ -13,8 +13,8 @@
         .form-group
           = rating_form.label :score, class: 'col-sm-2 control-label'
           .col-sm-10
-            .the-score
-            = rating_form.hidden_field :score
+            .js-star-score
+            = rating_form.hidden_field :score, class: "js-input-score"
         .form-group
           = rating_form.label :description, class: 'col-sm-2 control-label'
           .col-sm-10
