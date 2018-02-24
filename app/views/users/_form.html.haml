@@ -25,6 +25,18 @@
     = f.label :website, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :website, class: 'form-control'
+
+  .form-group
+    = f.label :states, "In what states are you licensed to practice law?", class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :states, class: 'form-control'
+
+  .form-group
+    = f.label :attorney_registration_number, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :attorney_registration_number, class: 'form-control'
+
+
   .form-group
     = f.label :description, class: 'col-sm-2 control-label'
     .col-sm-10
