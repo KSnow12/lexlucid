@@ -33,6 +33,8 @@
               %a{href: "#about"} About
             %li
               %a{href: "#contact"} Contact
+            %li
+              = link_to 'Attorney Registration', new_user_path
     .container
       .row
         - flash.each do |name, msg|
