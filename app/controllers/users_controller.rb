@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, except: [:index, :show, :destroy]
 
   # GET /users
   # GET /users.json
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to new_document_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -65,7 +67,8 @@ class UsersController < ApplicationController
     if request.post?
       @user = User.find_by_email(params[:email])
       if @user.try(:authenticate, params[:password])
-        redirect_to new_documents_path
+        session[:user_id] = @user.id
+        redirect_to new_document_path
       else
         flash[:notice] = "Bad username or password"
       end
