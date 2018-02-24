@@ -61,6 +61,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    if request.post?
+      @user = User.find_by_email(params[:email])
+      if @user.try(:authenticate, params[:password])
+        redirect_to new_documents_path
+      else
+        flash[:notice] = "Bad username or password"
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
