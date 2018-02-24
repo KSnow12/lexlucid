@@ -11,21 +11,13 @@
           %li= msg
 
   .form-group
-    = f.label :human_title, class: 'col-sm-2 control-label'
+    = f.label :human_title, , "Layman's Term", class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :human_title, class: 'form-control'
   .form-group
-    = f.label :human_description, class: 'col-sm-2 control-label'
+    = f.label :human_description, , "Layman's Description", class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :human_description, class: 'form-control'
-  .form-group
-    = f.label :lawyer_title, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_area :lawyer_title, class: 'form-control'
-  .form-group
-    = f.label :lawyer_description, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_area :lawyer_description, class: 'form-control'
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'
