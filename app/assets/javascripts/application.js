@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require star-rating-svg
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap

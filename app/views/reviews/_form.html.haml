@@ -13,7 +13,8 @@
         .form-group
           = rating_form.label :score, class: 'col-sm-2 control-label'
           .col-sm-10
-            = rating_form.select :score, (1..5), class: "form-control"
+            .the-score
+            = rating_form.hidden_field :score
         .form-group
           = rating_form.label :description, class: 'col-sm-2 control-label'
           .col-sm-10
