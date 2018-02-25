@@ -13,3 +13,11 @@ $(document).on 'ready page:load', (e) ->
       $scoreInput = $el.closest('.panel-body').find('.js-input-score')
       $scoreInput.val(currentRating)
 
+
+  $(".js-star-readonly-score").each ->
+    $(this).starRating
+      starSize: 40,
+      starShape: 'rounded',
+      useFullStars: true,
+      readOnly: true,
+      initialRating: $(this).data("score")

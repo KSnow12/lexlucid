@@ -9,6 +9,7 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
+    @summarized_ratings = Review.summarize_scores(@document)
   end
 
   # GET /documents/new
