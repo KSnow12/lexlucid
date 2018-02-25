@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
     @documents = Document.search(params[:q])
