@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20180224235300) do
     t.text "name"
     t.text "url"
     t.text "description"
-    t.date "published_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "document_type_id"
+    t.string "version"
     t.index ["document_type_id"], name: "index_documents_on_document_type_id"
   end
 

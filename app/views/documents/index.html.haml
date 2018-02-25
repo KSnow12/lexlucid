@@ -2,7 +2,12 @@
   = link_to new_document_path, class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     New Document
-  %h1 Listing documents
+  %h1 Reviewed Documents
+
+= form_tag documents_path, method: :get do
+  = text_field_tag :q, params[:q]
+  = submit_tag 'Search'
+= link_to 'clear', documents_path
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
@@ -11,7 +16,7 @@
         %th Name
         %th Url
         %th Type
-        %th Published on
+        %th Version
         %th
         %th
         %th
@@ -22,7 +27,7 @@
           %td= document.name
           %td= document.url
           %td= document.document_type.category
-          %td= document.published_on
+          %td= document.version
           %td= link_to 'Show', document
           %td= link_to 'Edit', edit_document_path(document)
           %td= link_to 'Destroy', document, data: { confirm: 'Are you sure?' }, method: :delete

@@ -4,7 +4,12 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    if params[:q]
+      @documents = Document.search(params[:q])
+    else
+      @documents = Document.all
+    end
+
   end
 
   # GET /documents/1
@@ -69,6 +74,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:name, :url, :description, :published_on, :document_type_id)
+      params.require(:document).permit(:name, :url, :description, :version, :document_type_id)
     end
 end

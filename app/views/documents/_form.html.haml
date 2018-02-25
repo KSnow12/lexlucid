@@ -14,13 +14,13 @@
     .col-sm-10
       = f.collection_select :document_type_id, DocumentType.order(:category), :id, :category, {}, class: "form-control"
   .form-group
+    = f.label :version, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :version, class: "form-control", placeholder: 'Last updated, Version Number'
+  .form-group
     = f.label :description, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :description, class: "form-control"
-  .form-group
-    = f.label :published_on, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.date_select :published_on, class: "form-control"
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Add Contract/Agreement", class: 'btn btn-primary'
