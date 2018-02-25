@@ -8,12 +8,8 @@
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
+        %th Name
         %th Email
-        %th First name
-        %th Last name
-        %th Password digest
-        %th Website
-        %th Description
         %th Company name
         %th
         %th
@@ -22,12 +18,8 @@
     %tbody
       - @users.each do |user|
         %tr
+          %td= [user.first_name, user.last_name].join(' ')
           %td= user.email
-          %td= user.first_name
-          %td= user.last_name
-          %td= user.password_digest
-          %td= user.website
-          %td= user.description
           %td= user.company_name
           %td= link_to 'Show', user
           %td= link_to 'Edit', edit_user_path(user)

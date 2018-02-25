@@ -1,24 +1,24 @@
 .page-header
-  = link_to users_path, class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
-    Back
-  = link_to edit_user_path(@user), class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
-  %h1 Show user
+  - if logged_in? && current_user.admin?
+    = link_to users_path, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_user_path(@user), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+  %h1= [@user.first_name, @user.last_name].join(' ')
 
 %dl.dl-horizontal
   %dt Email:
   %dd= @user.email
-  %dt First name:
-  %dd= @user.first_name
-  %dt Last name:
-  %dd= @user.last_name
-  %dt Password digest:
-  %dd= @user.password_digest
   %dt Website:
   %dd= @user.website
-  %dt Description:
-  %dd= @user.description
   %dt Company name:
   %dd= @user.company_name
+  %dt Description:
+  %dd= @user.description
+
+%h2 Reviews
+%ul
+  - @user.reviews.each do |review|
+    %li= link_to review.document.name, review.document
