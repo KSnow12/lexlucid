@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :document
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 
   accepts_nested_attributes_for :ratings, reject_if: ->(attributes) {attributes[:bullet_point_id].blank? && attributes[:bullet_point_id].blank? && attributes[:description].blank?}
 
