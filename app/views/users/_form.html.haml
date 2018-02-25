@@ -12,11 +12,11 @@
   .form-group
     = f.label :email, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.email_field :email, class: 'form-control'
+      = f.email_field :email, class: 'form-control', required: true
   .form-group
     = f.label :password, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.password_field :password, class: 'form-control'
+      = f.password_field :password, class: 'form-control', required: true
   .form-group
     = f.label :company_name, class: 'col-sm-2 control-label'
     .col-sm-10
@@ -29,12 +29,12 @@
   .form-group
     = f.label :states, "In what states are you licensed to practice law?", class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :states, class: 'form-control'
+      = f.text_field :states, class: 'form-control', required: true
 
   .form-group
     = f.label :attorney_registration_number, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :attorney_registration_number, class: 'form-control'
+      = f.text_field :attorney_registration_number, class: 'form-control', required: true
 
 
   .form-group
