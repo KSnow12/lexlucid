@@ -9,7 +9,7 @@ class Document < ApplicationRecord
       scope = scope.where("documents.name ILIKE :query OR documents.company_name ILIKE :query", query: "%#{query}%")
     end
 
-    scope.all
+    scope.all.order("company_name DESC")
   end
 
   def url
