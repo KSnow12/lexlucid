@@ -13,6 +13,11 @@ $(document).on 'ready turbolinks:load', (e) ->
       $scoreInput = $el.closest('.panel-body').find('.js-input-score')
       $scoreInput.val(currentRating)
 
+  $(".js-star-score").each ->
+    $inputField = $(this).closest('.panel-body').find('.js-input-score')
+    if $inputField.val() != ''
+      $(this).starRating('setRating', $inputField.val())
+
 
   $(".js-star-readonly-score").each ->
     $(this).starRating

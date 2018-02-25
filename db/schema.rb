@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225003919) do
+ActiveRecord::Schema.define(version: 20180225181133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180225003919) do
     t.datetime "updated_at", null: false
     t.bigint "document_type_id"
     t.string "version"
+    t.text "company_name"
     t.index ["document_type_id"], name: "index_documents_on_document_type_id"
   end
 

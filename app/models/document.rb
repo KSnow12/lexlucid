@@ -6,7 +6,7 @@ class Document < ApplicationRecord
     scope = includes(:document_type, :reviews)
 
     if query.present?
-      scope = scope.where("documents.name ILIKE :query", query: "%#{query}%")
+      scope = scope.where("documents.name ILIKE :query OR documents.company_name ILIKE :query", query: "%#{query}%")
     end
 
     scope.all
@@ -14,7 +14,7 @@ class Document < ApplicationRecord
 
   def url
     the_url = super
-    if the_url =~ %r{^https?://}
+    if the_url =~ %r{^https?://} || the_url.blank?
       the_url
     else
       "http://#{the_url}"

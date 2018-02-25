@@ -1,10 +1,8 @@
 .page-header
-  = link_to reviews_path, class: 'btn btn-default' do
+  = link_to document_path(@document), class: 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
-    Back
-  = link_to @review, class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-info-sign
-    Show
+    Cancel
   %h1 Editing review
 
-= render 'form'
+= form_for @review, html: { class: "form-horizontal", role: "form" } do |f|
+  = render partial: 'form', locals: {f: f}

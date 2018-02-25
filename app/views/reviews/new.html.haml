@@ -4,4 +4,5 @@
     Back
   %h1 New review
 
-= render 'form'
+= form_for [@document, @review], html: { class: "form-horizontal", role: "form" } do |f|
+  = render partial: 'form', locals: {f: f}

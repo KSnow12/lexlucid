@@ -32,7 +32,7 @@
     .panel-body
       %h3= rating.bullet_point.human_title
       %h4= rating.bullet_point.human_description
-      %p Reviews: #{rating.reviews_done}
+      %p Attorney Reviews: #{rating.reviews_done}
       .js-star-readonly-score{data: {score: rating.avg_score}}
 
       %div{class: "js-review-bullet-#{rating.bullet_point_id}"}
