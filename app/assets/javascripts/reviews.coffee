@@ -40,3 +40,12 @@ $(document).on 'ready turbolinks:load', (e) ->
     $others.find("option[value='#{valueSelected}']").prop("disabled",true)
     $(this).data('previous-value', valueSelected)
 
+
+
+  $(".js-bullet-point").each ->
+    $others = $('.js-bullet-point').not("#"+$(this).attr("id"))
+
+    #disable
+    valueSelected = $(this).find('option:selected').val()
+    $others.find("option[value='#{valueSelected}']").prop("disabled",true)
+    $(this).data('previous-value', valueSelected)
