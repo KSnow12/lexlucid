@@ -21,3 +21,17 @@ $(document).on 'ready page:load', (e) ->
       useFullStars: true,
       readOnly: true,
       initialRating: $(this).data("score")
+
+  $('.js-bullet-point').on 'change', (e) ->
+    previousValue = $(this).data('previous-value')
+    $others = $('.js-bullet-point').not("#"+$(this).attr("id"))
+
+    if previousValue
+      #undisable the previous
+      $others.find("option[value='#{previousValue}']").prop("disabled",false)
+
+    #disable
+    valueSelected = $(this).find('option:selected').val()
+    $others.find("option[value='#{valueSelected}']").prop("disabled",true)
+    $(this).data('previous-value', valueSelected)
+

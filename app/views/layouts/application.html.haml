@@ -29,7 +29,12 @@
           %ul.nav.navbar-nav
             %li.active
               = link_to "Documents", documents_path
-            - unless logged_in?
+            - if logged_in?
+              %li
+                = link_to logout_path, data: {method: :delete, "no-turbolink" => true} do
+                  Logout&nbsp;
+                  %span.fa.fa-sign-out.fa-lg
+            - else
               %li
                 = link_to 'Attorney Registration', new_user_path
             - if logged_in? and current_user.admin?
