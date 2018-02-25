@@ -5,6 +5,10 @@
   = link_to edit_document_path(@document), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
+  - if logged_in?
+    = link_to new_document_review_path(@document), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus-sign
+      Add Review
   %h1= @document.name
 
 %dl.dl-horizontal
@@ -23,6 +27,6 @@
   .panel.panel-default
     .panel-body
       %h3= rating.bullet_point.human_title
-      %h3 Reviews: #{rating.reviews_done}
-      %p= rating.bullet_point.human_description
+      %h4= rating.bullet_point.human_description
+      %p Reviews: #{rating.reviews_done}
       .js-star-readonly-score{data: {score: rating.score}}
