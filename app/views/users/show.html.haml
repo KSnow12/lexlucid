@@ -1,11 +1,13 @@
 .page-header
-  - if logged_in? && current_user.admin?
-    = link_to users_path, class: 'btn btn-default' do
-      %span.glyphicon.glyphicon-list-alt
-      Back
+  - if logged_in? && @user == current_user
+    = link_to logout_path, class: 'btn btn-default', data: {method: :delete, "no-turbolink" => true} do
+      Logout&nbsp;
+      %span.fa.fa-sign-out.fa-lg
+
     = link_to edit_user_path(@user), class: 'btn btn-primary' do
       %span.glyphicon.glyphicon-pencil
       Edit
+
   %h1= [@user.first_name, @user.last_name].join(' ')
 
 %dl.dl-horizontal
@@ -15,8 +17,9 @@
   %dd= link_to @user.website, @user.website, target: '_blank'
   %dt Company name:
   %dd= @user.company_name
-  %dt Description:
-  %dd= @user.description
+  - if @user.description.present?
+    %dt Description:
+    %dd= @user.description
 
 %h2 Reviews
 %table.table.table-striped.table-bordered.table-hover
