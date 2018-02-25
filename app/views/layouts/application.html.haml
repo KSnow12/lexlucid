@@ -32,7 +32,10 @@
             - unless logged_in?
               %li
                 = link_to 'Attorney Registration', new_user_path
-
+            - if logged_in? and current_user.admin?
+              %li= link_to 'Document Types', document_types_path
+              %li= link_to 'Bullet Points', bullet_points_path
+              %li= link_to 'Users', users_path
           %span.navbar-text{style: 'float: right'}
             - if logged_in?
               = current_user.email

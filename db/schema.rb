@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180224235300) do
+ActiveRecord::Schema.define(version: 20180225003919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 20180224235300) do
   create_table "bullet_points", force: :cascade do |t|
     t.text "human_title"
     t.text "human_description"
-    t.text "lawyer_title"
-    t.text "lawyer_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180224235300) do
     t.datetime "updated_at", null: false
     t.string "states"
     t.string "attorney_registration_number"
+    t.boolean "admin", default: false, null: false
   end
 
   add_foreign_key "documents", "document_types"

@@ -1,17 +1,15 @@
 .page-header
   = link_to new_bullet_point_path, class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
-    New Bullet point
-  %h1 Listing bullet_points
+    New Bullet Point
+  %h1 Bullet Points
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th Human title
-        %th Human description
-        %th Lawyer title
-        %th Lawyer description
+        %th Layman's title
+        %th Layman's description
         %th
         %th
         %th
@@ -21,8 +19,6 @@
         %tr
           %td= bullet_point.human_title
           %td= bullet_point.human_description
-          %td= bullet_point.lawyer_title
-          %td= bullet_point.lawyer_description
           %td= link_to 'Show', bullet_point
           %td= link_to 'Edit', edit_bullet_point_path(bullet_point)
           %td= link_to 'Destroy', bullet_point, data: { confirm: 'Are you sure?' }, method: :delete
