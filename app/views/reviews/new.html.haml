@@ -1,8 +1,10 @@
 .page-header
-  = link_to document_path(@document.id), class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
-    Back
   %h1 New review
 
 = form_for [@document, @review], html: { class: "form-horizontal", role: "form" } do |f|
   = render partial: 'form', locals: {f: f}
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Add Review", class: 'btn btn-primary'
+      \&nbsp;&nbsp;
+      = link_to "Cancel", documents_path

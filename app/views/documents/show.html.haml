@@ -1,7 +1,4 @@
 .page-header
-  = link_to documents_path, class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
-    Back
   = link_to edit_document_path(@document), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
@@ -12,6 +9,8 @@
   %h1= @document.name
 
 %dl.dl-horizontal
+  %dt Company:
+  %dd= @document.company_name
   %dt Url:
   %dd= link_to @document.url, @document.url, target: "_blank"
   %dt Type:
