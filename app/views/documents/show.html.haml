@@ -47,7 +47,7 @@
             %tbody
               - rating.bullet_point.ratings.for_document(@document).preload(:review => :user).each do |lawyer_rating|
                 %tr
-                  %td #{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name}
+                  %td= link_to "#{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name}", lawyer_rating.review.user
                   %td= lawyer_rating.review.user.company_name
                   %td= lawyer_rating.score
                   %td= simple_format lawyer_rating.description
