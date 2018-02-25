@@ -37,4 +37,6 @@
               .js-star-readonly-score{data: {size: 'small', score: document.overall_score}, title: document.overall_score}
 
           - if logged_in?
-            %td= link_to_unless document.reviews.map(&:user_id).include?(current_user.id), 'Add Review', new_document_review_path(document)
+            %td
+              - if !current_user.has_reviewed_document?(document)
+                = link_to 'Add Review', new_document_review_path(document)
