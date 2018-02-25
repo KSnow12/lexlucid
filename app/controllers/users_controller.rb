@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 
   def login
     if request.post?
-      @user = User.find_by_email(params[:email])
+      @user = User.where("lower(email) = :email", email: params[:email].to_s.downcase).first
       if @user.try(:authenticate, params[:password])
         session[:user_id] = @user.id
         redirect_to documents_path
