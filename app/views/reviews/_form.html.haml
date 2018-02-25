@@ -7,7 +7,7 @@
     .panel.panel-default
       .panel-body
         .form-group
-          = rating_form.label :bullet_point_id, class: "col-sm-2 control-label"
+          = rating_form.label :bullet_point_id, "Issue", class: "col-sm-2 control-label"
           .col-sm-10
             = rating_form.collection_select :bullet_point_id, BulletPoint.order(:human_title), :id, :human_title, {prompt: raw("&mdash; Select &mdash;")}, class: "form-control js-bullet-point"
         .form-group

@@ -3,7 +3,7 @@ class Review < ApplicationRecord
   belongs_to :document
   has_many :ratings
 
-  accepts_nested_attributes_for :ratings
+  accepts_nested_attributes_for :ratings, reject_if: ->(attributes) {attributes[:bullet_point_id].blank? && attributes[:bullet_point_id].blank? && attributes[:description].blank?}
 
   def self.summarize_scores(document)
     Rating.joins(:review).
