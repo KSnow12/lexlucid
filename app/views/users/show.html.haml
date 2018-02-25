@@ -27,7 +27,7 @@
     %tr
       %th Document Name
       %th Company
-      - if logged_in? && (current_user.admin? || @user.reviews.any?)
+      - if logged_in? && (current_user.admin? || (@user.reviews.any? && current_user.id == @user.id))
         %th &nbsp;
         %th &nbsp;
   - @user.reviews.each do |review|
