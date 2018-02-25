@@ -20,15 +20,21 @@
         %th Company Name
         %th Version (Last Updated)
         %th # of Attorney Reviews
+        %th{style: "width: 120px;"} Overall Score
         - if logged_in?
           %th
 
     %tbody
+      - i = 0
       - @documents.each do |document|
         %tr
           %td= link_to document.name, document
           %td= document.company_name
           %td= document.version
           %td= document.reviews.count
+          %td
+            - if document.reviews.any?
+              .js-star-readonly-score{data: {size: 'small', score: document.overall_score}, title: document.overall_score}
+
           - if logged_in?
             %td= link_to_unless document.reviews.map(&:user_id).include?(current_user.id), 'Add Review', new_document_review_path(document)

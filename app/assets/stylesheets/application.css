@@ -12,6 +12,9 @@
  *
  *= require font-awesome
  *= require star-rating-svg
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
+ *= require jquery-ui/tooltip
  *= require_tree .
  *= require_self
  */

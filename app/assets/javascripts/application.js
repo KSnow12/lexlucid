@@ -14,4 +14,5 @@
 //= require star-rating-svg
 //= require rails-ujs
 //= require bootstrap
+//= require jquery-ui/widgets/tooltip
 //= require_tree .

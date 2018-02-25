@@ -38,6 +38,7 @@ gem 'bootstrap-generators', '~> 3.3.4'
 gem "font-awesome-rails"
 gem 'sass'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

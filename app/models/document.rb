@@ -20,4 +20,12 @@ class Document < ApplicationRecord
       "http://#{the_url}"
     end
   end
+
+  def overall_score
+    @overall_score ||= begin
+      scores = Review.summarize_scores(self).map(&:avg_score)
+      return nil if scores.empty?
+      scores.sum / scores.size
+    end
+  end
 end
