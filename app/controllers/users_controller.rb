@@ -70,7 +70,7 @@ class UsersController < ApplicationController
       @user = User.find_by_email(params[:email])
       if @user.try(:authenticate, params[:password])
         session[:user_id] = @user.id
-        redirect_to new_document_path
+        redirect_to documents_path
       else
         flash[:notice] = "Bad username or password"
       end
