@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  root to: "welcome#index"
+  root to: "documents#index"
   resources :bullet_points
   resources :ratings
   resources :document_types
