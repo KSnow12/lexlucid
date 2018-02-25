@@ -9,7 +9,8 @@ class Review < ApplicationRecord
     Rating.joins(:review).
     select("""
       AVG(score) AS score,
-      bullet_point_id
+      bullet_point_id,
+      COUNT(bullet_point_id) AS reviews_done
     """).
     group(:bullet_point_id).
     where("reviews.document_id = ?", document.id).

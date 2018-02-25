@@ -23,5 +23,6 @@
   .panel.panel-default
     .panel-body
       %h3= rating.bullet_point.human_title
+      %h3 Reviews: #{rating.reviews_done}
       %p= rating.bullet_point.human_description
       .js-star-readonly-score{data: {score: rating.score}}
