@@ -50,4 +50,4 @@
                   %td #{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name}
                   %td= lawyer_rating.review.user.company_name
                   %td= lawyer_rating.score
-                  %td= lawyer_rating.description
+                  %td= simple_format lawyer_rating.description
