@@ -1,15 +1,9 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index]
 
-  # GET /documents
-  # GET /documents.json
   def index
-    if params[:q]
-      @documents = Document.search(params[:q])
-    else
-      @documents = Document.all
-    end
-
+    @documents = Document.search(params[:q])
   end
 
   # GET /documents/1

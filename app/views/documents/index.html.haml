@@ -1,33 +1,34 @@
 .page-header
-  = link_to new_document_path, class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-plus
-    New Document
+  - if logged_in?
+    = link_to new_document_path, class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Document
   %h1 Reviewed Documents
 
 = form_tag documents_path, method: :get do
   = text_field_tag :q, params[:q]
   = submit_tag 'Search'
-= link_to 'clear', documents_path
+  = link_to 'clear', documents_path
+
+%br
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
         %th Name
-        %th Url
         %th Type
         %th Version
-        %th
-        %th
-        %th
+        %th Reviews
+        - if logged_in?
+          %th
 
     %tbody
       - @documents.each do |document|
         %tr
-          %td= document.name
-          %td= document.url
+          %td= link_to document.name, document
           %td= document.document_type.category
           %td= document.version
-          %td= link_to 'Show', document
-          %td= link_to 'Edit', edit_document_path(document)
-          %td= link_to 'Destroy', document, data: { confirm: 'Are you sure?' }, method: :delete
+          %td= document.reviews.count
+          - if logged_in?
+            %td= link_to_unless document.reviews.map(&:user_id).include?(current_user.id), 'Add Review', new_document_review_path(document)

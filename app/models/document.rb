@@ -3,6 +3,12 @@ class Document < ApplicationRecord
   has_many :reviews
 
   def self.search(query)
-    where("documents.name ILIKE :query", query: "%#{query}%")
+    scope = includes(:document_type, :reviews)
+
+    if query.present?
+      scope = scope.where("documents.name ILIKE :query", query: "%#{query}%")
+    end
+
+    scope.all
   end
 end
