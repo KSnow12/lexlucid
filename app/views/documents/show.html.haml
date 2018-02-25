@@ -23,7 +23,7 @@
   - @summarized_ratings.each do |rating|
     %dt= rating.bullet_point.human_title
     %dd
-      .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
+      .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}, title: rating.avg_score}
 
 %h2 Scores
 
@@ -33,7 +33,7 @@
       %h3= rating.bullet_point.human_title
       %h4= rating.bullet_point.human_description
       %p Attorney Reviews: #{rating.reviews_done}
-      .js-star-readonly-score{data: {score: rating.avg_score}}
+      .js-star-readonly-score{data: {score: rating.avg_score}, title: rating.avg_score}
 
       %div{class: "js-review-bullet-#{rating.bullet_point_id}"}
         .table-responsive
