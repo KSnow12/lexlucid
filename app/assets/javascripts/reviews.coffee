@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'ready page:load', (e) ->
+$(document).on 'ready turbolinks:load', (e) ->
   $('.js-star-score').starRating
     starSize: 40,
     starShape: 'rounded',
@@ -16,9 +16,9 @@ $(document).on 'ready page:load', (e) ->
 
   $(".js-star-readonly-score").each ->
     $(this).starRating
-      starSize: 40,
+      starSize: if $(this).data('size') == 'small' then 20 else 40,
       starShape: 'rounded',
-      useFullStars: true,
+      useFullStars: false,
       readOnly: true,
       initialRating: $(this).data("score")
 

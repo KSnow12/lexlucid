@@ -11,4 +11,13 @@ class Document < ApplicationRecord
 
     scope.all
   end
+
+  def url
+    the_url = super
+    if the_url =~ %r{^https?://}
+      the_url
+    else
+      "http://#{the_url}"
+    end
+  end
 end

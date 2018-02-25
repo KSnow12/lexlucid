@@ -15,6 +15,10 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = Document.new
+
+    if current_user.has_reviewed_document?(@document) && !current_user.admin?
+      redirect_to document_path(@document), notice: "You have already reviewed that"
+    end
   end
 
   # GET /documents/1/edit
@@ -25,6 +29,10 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(document_params)
+
+    if current_user.has_reviewed_document?(@document) && !current_user.admin?
+      redirect_to document_path(@document), notice: "You have already reviewed that"
+    end
 
     respond_to do |format|
       if @document.save

@@ -8,7 +8,7 @@ class Review < ApplicationRecord
   def self.summarize_scores(document)
     Rating.joins(:review).
     select("""
-      AVG(score) AS score,
+      AVG(score) AS avg_score,
       bullet_point_id,
       COUNT(bullet_point_id) AS reviews_done
     """).
@@ -17,11 +17,5 @@ class Review < ApplicationRecord
     order("COUNT(bullet_point_id) DESC").
     preload(:bullet_point).
     limit(5)
-    #Review.select("""
-#
-    #""").
-    #group(:user_id).
-    #where(document_id: document.id).
-    #order("COUNT(")
   end
 end

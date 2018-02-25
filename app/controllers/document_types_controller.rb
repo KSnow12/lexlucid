@@ -28,7 +28,7 @@ class DocumentTypesController < ApplicationController
 
     respond_to do |format|
       if @document_type.save
-        format.html { redirect_to @document_type, notice: 'Document type was successfully created.' }
+        format.html { redirect_to document_types_path, notice: 'Document type was successfully created.' }
         format.json { render :show, status: :created, location: @document_type }
       else
         format.html { render :new }

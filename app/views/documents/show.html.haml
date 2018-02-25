@@ -5,7 +5,7 @@
   = link_to edit_document_path(@document), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
-  - if logged_in?
+  - if logged_in? && !current_user.has_reviewed_document?(@document)
     = link_to new_document_review_path(@document), class: 'btn btn-primary' do
       %span.glyphicon.glyphicon-plus-sign
       Add Review
@@ -20,6 +20,10 @@
   %dd= @document.description
   %dt Document Version:
   %dd= @document.version
+  - @summarized_ratings.each do |rating|
+    %dt= rating.bullet_point.human_title
+    %dd
+      .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
 
 %h2 Scores
 
@@ -29,4 +33,21 @@
       %h3= rating.bullet_point.human_title
       %h4= rating.bullet_point.human_description
       %p Reviews: #{rating.reviews_done}
-      .js-star-readonly-score{data: {score: rating.score}}
+      .js-star-readonly-score{data: {score: rating.avg_score}}
+
+      %div{class: "js-review-bullet-#{rating.bullet_point_id}"}
+        .table-responsive
+          %table.table.table-striped.table-bordered.table-hover
+            %thead
+              %tr
+                %th Name
+                %th Company/Law Firm
+                %th Score
+                %th Explanation
+            %tbody
+              - rating.bullet_point.ratings.for_document(@document).preload(:review => :user).each do |lawyer_rating|
+                %tr
+                  %td #{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name}
+                  %td= lawyer_rating.review.user.company_name
+                  %td= lawyer_rating.score
+                  %td= lawyer_rating.description
