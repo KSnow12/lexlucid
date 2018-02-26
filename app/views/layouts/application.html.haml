@@ -39,7 +39,7 @@
           %ul.nav.navbar-nav.pull-right
             -# %li.active
               = link_to "Documents", documents_path
-            - if !logged_in?
+            - if !logged_in? && !has_logged_in?
               %li
                 = link_to 'Attorney Registration', new_user_path
             - if logged_in? and current_user.admin?

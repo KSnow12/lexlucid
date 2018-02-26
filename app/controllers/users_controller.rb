@@ -84,6 +84,12 @@ class UsersController < ApplicationController
     redirect_to login_path
   end
 
+  def clear
+    reset_session
+    cookies.clear
+    redirect_to root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

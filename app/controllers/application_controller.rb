@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     end
 
     def has_logged_in?
-      cookies.permanent[:email].present?
+      cookies[:email].present?
     end
 
     def logged_in?
