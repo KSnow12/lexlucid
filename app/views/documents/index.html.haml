@@ -1,3 +1,28 @@
+%nav.navbar.navbar-fixed-top{role: "navigation", style: 'margin-bottom:0;'}
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"} }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.pull-right
+        -# %li.active
+          = link_to "Documents", documents_path
+        - if !logged_in?
+          %li
+            = link_to 'Attorney Registration', new_user_path
+        - if logged_in? and current_user.admin?
+          %li= link_to 'Document Types', document_types_path
+          %li= link_to 'Bullet Points', bullet_points_path
+          %li= link_to 'Users', users_path
+        - if logged_in?
+          %li= link_to [current_user.first_name, current_user.last_name].join(' '), current_user
+        - else
+          %li= link_to 'Login', '/login'
+
 .home_header.break_medium
   .container
     .break_large
