@@ -1,7 +1,8 @@
 .page-header
-  = link_to edit_document_path(@document), class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
+  - if logged_in?
+    = link_to edit_document_path(@document), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
   - if logged_in? && !current_user.has_reviewed_document?(@document)
     = link_to new_document_review_path(@document), class: 'btn btn-primary' do
       %span.glyphicon.glyphicon-plus-sign
