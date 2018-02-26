@@ -21,6 +21,7 @@ body
   font-weight: 500
   color: $app-black
   font-size: 1.5em
+  padding-top: 0
 
 .home_header
   padding: 8em 0
@@ -55,13 +56,30 @@ body
   &:hover
     background: #333
 
+.navbar
+  position: relative
+  background: $app-yellow
+  padding: 1.5em 0
+
+  .container
+    padding-left: 0
+    padding-right: 0
+
+.navbar_logo
+  width: 15em
+  margin-right: 1em
+
+.nav > li > a
+  &:hover, &:focus
+    background: $app-black
+    color: #fff
 a
   color: $app-black
-  text-decoration: none
-  border-bottom: 1px solid currentColor
+  /*text-decoration: none*/
+  /*border-bottom: 1px solid currentColor*/
   &:hover
     color: red
-    border-bottom: none
+    /*border-bottom: none*/
 
 small, .text_small
   font-size: $app-font-small
@@ -100,3 +118,6 @@ strong, b, .text_bold
 
 .break_xl
   margin-bottom: $app-margin-large*1.7
+
+.remove_border_bottom
+  border-bottom: none

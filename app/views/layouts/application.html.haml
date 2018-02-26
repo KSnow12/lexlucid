@@ -24,7 +24,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
+    %nav.navbar.navbar-fixed-top{role: "navigation"}
       .container
         .navbar-header
           %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"} }
@@ -32,10 +32,12 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "LexLucid", "/", class: "navbar-brand"
+          %a{href: '/'}
+            %img.navbar_logo{src: asset_path('lexlucid-logo-vector.svg')}
+
         #navbar.collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            %li.active
+          %ul.nav.navbar-nav.pull-right
+            -# %li.active
               = link_to "Documents", documents_path
             - if !logged_in?
               %li
@@ -44,11 +46,10 @@
               %li= link_to 'Document Types', document_types_path
               %li= link_to 'Bullet Points', bullet_points_path
               %li= link_to 'Users', users_path
-          %span.navbar-text{style: 'float: right'}
             - if logged_in?
-              = link_to [current_user.first_name, current_user.last_name].join(' '), current_user
+              %li= link_to [current_user.first_name, current_user.last_name].join(' '), current_user
             - else
-              = link_to 'Login', '/login'
+              %li= link_to 'Login', '/login'
 
     .container
       .row
