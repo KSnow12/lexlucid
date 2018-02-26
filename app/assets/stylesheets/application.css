@@ -15,8 +15,8 @@
  *= require jquery-ui/core
  *= require jquery-ui/theme
  *= require jquery-ui/tooltip
- *= require_tree .
+ *= require bootstrap-generators
+ *= require bootstrap-variables
+ *= require custom
  *= require_self
  */
-
-@import custom
