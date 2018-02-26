@@ -24,7 +24,7 @@ body
   padding-top: 0
 
 .home_header
-  padding: 8em 0
+  padding: 5em 0 8em 0
   background: $app-yellow
 
 .home_logo
@@ -70,12 +70,15 @@ body
   margin-right: 1em
 
 .nav > li > a
+  text-decoration: none
+  border-radius: 5px
+  /*font-weight: 700*/
   &:hover, &:focus
     background: $app-black
     color: #fff
 a
   color: $app-black
-  /*text-decoration: none*/
+  text-decoration: underline
   /*border-bottom: 1px solid currentColor*/
   &:hover
     color: red
@@ -100,6 +103,15 @@ em, i, .text_italic
 
 strong, b, .text_bold
   font-weight: $app-font-bold
+
+.btn-primary
+  background: $app-black
+  padding: 0.8em 2.3em
+  border: none
+  &:hover, &:focus
+    background: $app-yellow
+    color: $app-black
+
 
 //  keep these at the bottom
 //////////////////////////
