@@ -12,7 +12,19 @@
         = submit_tag "Search", class: 'home_header_submit'
 
 .container
+  - if logged_in?
+    = link_to new_document_path, class: 'btn btn-primary', style: 'float: right;' do
+      %span.glyphicon.glyphicon-plus
+      New Document
+  - elsif has_logged_in?
+    = link_to login_path, class: 'btn btn-primary', style: 'float: right;' do
+      Login
+  - else
+    = link_to new_user_path, class: 'btn btn-primary', style: 'float: right;' do
+      Attorney Registration
   %h2 Recently Reviewed Contracts
+
+
 
   .table-responsive
     %table.table.table-striped.table-bordered.table-hover

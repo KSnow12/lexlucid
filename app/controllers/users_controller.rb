@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
+        cookies.permanent[:email] = @user.email
         format.html { redirect_to documents_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -70,6 +71,7 @@ class UsersController < ApplicationController
       @user = User.where("lower(email) = :email", email: params[:email].to_s.downcase).first
       if @user.try(:authenticate, params[:password])
         session[:user_id] = @user.id
+        cookies.permanent[:email] = @user.email
         redirect_to documents_path
       else
         flash[:notice] = "Bad username or password"

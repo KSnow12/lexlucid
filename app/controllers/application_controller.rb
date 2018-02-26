@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_current_user
   before_action :require_login
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :has_logged_in?
 
   protected
 
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
     def current_user
       @current_user
+    end
+
+    def has_logged_in?
+      cookies.permanent[:email].present?
     end
 
     def logged_in?
