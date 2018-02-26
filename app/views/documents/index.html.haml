@@ -33,11 +33,20 @@
 
     .text_xl
       = form_tag documents_path, method: :get do
-        = text_field_tag :q, params[:q], class: 'home_header_input'
+        = text_field_tag :q, params[:q], class: 'home_header_input', placeholder: 'Find a Contract'
         = submit_tag "Search", class: 'home_header_submit'
 
 .container
-  %h2 Recently Reviewed Contracts
+
+  - if params[:q].present?
+    = link_to documents_path, class: 'btn btn-default pull-right' do
+      %span.glyphicon.glyphicon-remove
+      Clear Search
+
+    %h2 Results for: '#{params[:q]}'
+
+  - else
+    %h2 Recently Reviewed Contracts
 
 
 

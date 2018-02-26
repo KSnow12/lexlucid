@@ -30,6 +30,8 @@ body
 .home_logo
   width: 46em
   margin-left: -10.4em
+  //&:hover
+    //opacity: 0.6
 
 .home_header_input, .home_header_submit
   float: left
@@ -68,6 +70,8 @@ body
 .navbar_logo
   width: 15em
   margin-right: 1em
+  &:hover
+    opacity: 0.6
 
 .nav > li > a
   text-decoration: none
@@ -104,13 +108,21 @@ em, i, .text_italic
 strong, b, .text_bold
   font-weight: $app-font-bold
 
+.btn
+  padding: 0.8em 2.3em
+  text-decoration: none
+
 .btn-primary
   background: $app-black
-  padding: 0.8em 2.3em
-  border: none
+  border-color: transparent
   &:hover, &:focus
     background: $app-yellow
     color: $app-black
+    border-color: transparent
+
+.footer
+  margin-top: 10em
+  padding: 2em 0
 
 
 //  keep these at the bottom

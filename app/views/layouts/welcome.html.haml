@@ -25,3 +25,12 @@
     = csrf_meta_tags
   %body{style: 'padding-top:0;'}
     = yield
+
+    .footer
+      .container
+        .pull-right
+          = link_to 'Terms of Use', '#'
+
+        &copy;
+        = Time.now.year
+        LexLucid. All rights reserved
