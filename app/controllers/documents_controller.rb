@@ -4,6 +4,8 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = Document.search(params[:q])
+
+    render layout: 'welcome'
   end
 
   # GET /documents/1
@@ -49,7 +51,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     respond_to do |format|
-      if @document.update(document_params)
+      if @document.update_attributes(document_params)
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else

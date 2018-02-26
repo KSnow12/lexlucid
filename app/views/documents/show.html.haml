@@ -20,14 +20,14 @@
   %dt Document Version:
   %dd= @document.version
   - @summarized_ratings.each do |rating|
-    %dt= rating.bullet_point.human_title
+    %dt= link_to rating.bullet_point.human_title, "#issue-#{rating.bullet_point_id}"
     %dd
       .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
 
 %h2 Scores
 
 - @summarized_ratings.each do |rating|
-  .panel.panel-default
+  .panel.panel-default{id: "issue-#{rating.bullet_point_id}"}
     .panel-body
       %h3= rating.bullet_point.human_title
       %h4= rating.bullet_point.human_description

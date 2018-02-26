@@ -1,42 +1,43 @@
-.page-header
-  - if logged_in?
-    = link_to new_document_path, class: 'btn btn-primary' do
-      %span.glyphicon.glyphicon-plus
-      New Document
-  %h1 Reviewed Documents
+.home_header.break_medium
+  .container
+    .break_large
+      %img.home_logo{src: '/assets/lexlucid-logo-vector.svg'}
 
-= form_tag documents_path, method: :get do
-  = text_field_tag :q, params[:q]
-  = submit_tag 'Search'
-  = link_to 'clear', documents_path
+      %h1 Grading contracts for the greater good.
 
-%br
+    .text_xl
+      = form_tag documents_path, method: :get do
+        = text_field_tag :q, params[:q], class: 'home_header_input'
+        = submit_tag "Search", class: 'home_header_submit'
 
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th Contract/Agreement Name
-        %th Company Name
-        %th Version (Last Updated)
-        %th # of Attorney Reviews
-        %th{style: "width: 120px;"} Overall Score
-        - if logged_in?
-          %th
+.container
+  %h2 Recently Reviewed Contracts
 
-    %tbody
-      - i = 0
-      - @documents.each do |document|
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
         %tr
-          %td= link_to document.name, document
-          %td= document.company_name
-          %td= document.version
-          %td= document.reviews.count
-          %td
-            - if document.reviews.any?
-              .js-star-readonly-score{data: {size: 'small', score: document.overall_score}, title: document.overall_score}
-
+          %th Contract/Agreement Name
+          %th Company Name
+          %th Version (Last Updated)
+          %th # of Attorney Reviews
+          %th{style: "width: 120px;"} Overall Score
           - if logged_in?
+            %th
+
+      %tbody
+        - i = 0
+        - @documents.each do |document|
+          %tr
+            %td= link_to document.name, document
+            %td= document.company_name
+            %td= document.version
+            %td= document.reviews.count
             %td
-              - if !current_user.has_reviewed_document?(document)
-                = link_to 'Add Review', new_document_review_path(document)
+              - if document.reviews.any?
+                .js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
+
+            - if logged_in?
+              %td
+                - if !current_user.has_reviewed_document?(document)
+                  = link_to 'Add Review', new_document_review_path( document)
