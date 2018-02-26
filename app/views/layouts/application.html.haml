@@ -47,6 +47,7 @@
               %li= link_to 'Bullet Points', bullet_points_path
               %li= link_to 'Users', users_path
             - if logged_in?
+              %li= link_to "Add Contract", new_document_path
               %li= link_to [current_user.first_name, current_user.last_name].join(' '), current_user
             - else
               %li= link_to 'Login', '/login'
