@@ -2,9 +2,12 @@
   = render partial: "shared/error_messages", locals: { object: @document_type }
 
   .form-group
-    = f.label :category, class: 'col-sm-2 control-label'
+    = f.label :category, 'Type', class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :category, class: 'form-control'
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit class: 'btn btn-primary'
+      = f.submit class: 'btn btn-primary text_capitalize'
+      = link_to document_types_path, class: 'btn btn-default' do
+        %span.fa.fa-fw.fa-times
+        Cancel
