@@ -40,12 +40,12 @@
           %table.table.table-striped.table-bordered.table-hover
             %thead
               %tr
-                %th Name
+                %th Attorney
                 %th Score
                 %th Explanation
             %tbody
               - rating.bullet_point.ratings.for_document(@document).preload(:review => :user).each do |lawyer_rating|
                 %tr
                   %td.cell_collapse= link_to "#{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name[0]}", lawyer_rating.review.user
-                  %td= lawyer_rating.score
+                  %td.cell_collapse.text_right= lawyer_rating.score
                   %td= simple_format lawyer_rating.description
