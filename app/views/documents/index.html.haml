@@ -38,16 +38,16 @@
         = submit_tag "Search", class: 'home_header_submit'
 
 .container
+  .page-header
+    - if params[:q].present?
+      = link_to documents_path, class: 'btn btn-default pull-right' do
+        %span.fa.fa-fw.fa-times
+        Clear Search
 
-  - if params[:q].present?
-    = link_to documents_path, class: 'btn btn-default pull-right' do
-      %span.fa.fa-fw.fa-times
-      Clear Search
+      %h2 Results for: '#{params[:q]}'
 
-    %h2 Results for: '#{params[:q]}'
-
-  - else
-    %h2 Recently Reviewed Contracts
+    - else
+      %h2 Recently Reviewed Contracts
 
 
 
