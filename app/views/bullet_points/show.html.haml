@@ -1,14 +1,14 @@
 .page-header
   = link_to bullet_points_path, class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
+    %span.fa.fa-fw.fa-arrow-left
     Back
   = link_to edit_bullet_point_path(@bullet_point), class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
+    %span.fa.fa-fw.fa-pencil
     Edit
   %h1 Bullet Point
 
 %dl.dl-horizontal
-  %dt Human title:
+  %dt Layman's Title:
   %dd= @bullet_point.human_title
-  %dt Human description:
+  %dt Layman's Desc:
   %dd= @bullet_point.human_description

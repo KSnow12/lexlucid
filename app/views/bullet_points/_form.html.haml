@@ -20,4 +20,8 @@
       = f.text_area :human_description, class: 'form-control'
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit class: 'btn btn-primary'
+      = f.submit class: 'btn btn-primary text_capitalize'
+
+      = link_to bullet_points_path, class: 'btn btn-default' do
+        %span.fa.fa-fw.fa-times
+        Cancel

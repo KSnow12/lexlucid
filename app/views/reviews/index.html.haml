@@ -1,14 +1,14 @@
 .page-header
   = link_to new_review_path, class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-plus
+    %span.fa.fa-fw.fa-plus
     New Review
-  %h1 Listing reviews
+  %h1 Listing Reviews
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th Lawyer
+        %th Attorney
         %th Body
         %th
         %th
@@ -21,4 +21,4 @@
           %td= review.body
           %td= link_to 'Show', review
           %td= link_to 'Edit', edit_review_path(review)
-          %td= link_to 'Destroy', review, data: { confirm: 'Are you sure?' }, method: :delete
+          %td= link_to 'Delete', review, data: { confirm: 'Are you sure?' }, method: :delete

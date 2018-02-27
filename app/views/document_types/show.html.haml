@@ -1,12 +1,12 @@
 .page-header
   = link_to document_types_path, class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
+    %span.fa.fa-fw.fa-arrow-left
     Back
   = link_to edit_document_type_path(@document_type), class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
+    %span.fa.fa-fw.fa-pencil
     Edit
-  %h1 Show Document Type
+  %h1 Document Type
 
 %dl.dl-horizontal
-  %dt Category:
+  %dt Type:
   %dd= @document_type.category

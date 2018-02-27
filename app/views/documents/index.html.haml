@@ -41,7 +41,7 @@
 
   - if params[:q].present?
     = link_to documents_path, class: 'btn btn-default pull-right' do
-      %span.glyphicon.glyphicon-remove
+      %span.fa.fa-fw.fa-times
       Clear Search
 
     %h2 Results for: '#{params[:q]}'
@@ -55,11 +55,11 @@
     %table.table.table-striped.table-bordered.table-hover
       %thead
         %tr
-          %th Contract/Agreement Name
-          %th Company Name
-          %th Version (Last Updated)
-          %th # of Attorney Reviews
-          %th{style: "width: 120px;"} Overall Score
+          %th Contract / Agreement
+          %th Company
+          %th Version / Updated
+          %th Reviews
+          %th{style: "width: 120px;"} Score
           - if logged_in?
             %th
 
@@ -70,12 +70,12 @@
             %td= link_to document.name, document
             %td= document.company_name
             %td= document.version
-            %td= document.reviews.count
+            %td.text_right= document.reviews.count
             %td
               - if document.reviews.any?
                 .js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
 
             - if logged_in?
-              %td
+              %td.cell_collapse
                 - if !current_user.has_reviewed_document?(document)
                   = link_to 'Add Review', new_document_review_path( document)

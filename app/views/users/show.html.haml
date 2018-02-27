@@ -2,10 +2,10 @@
   - if logged_in? && @user == current_user
     = link_to logout_path, class: 'btn btn-default', data: {method: :delete, "no-turbolink" => true} do
       Logout&nbsp;
-      %span.fa.fa-sign-out.fa-lg
+      %span.fa.fa-fw.fa-sign-out
 
     = link_to edit_user_path(@user), class: 'btn btn-primary' do
-      %span.glyphicon.glyphicon-pencil
+      %span.fa.fa-fw.fa-pencil
       Edit
 
   %h1= [@user.first_name, @user.last_name].join(' ')

@@ -2,29 +2,33 @@
   = render partial: "shared/error_messages", locals: { object: @document }
 
   .form-group
-    = f.label :name, "Contract/Agreement Name", class: 'col-sm-2 control-label'
+    = f.label :name, "Title", class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :name, class: "form-control"
   .form-group
-    = f.label :company_name, "Company Name", class: 'col-sm-2 control-label'
+    = f.label :company_name, "Company", class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :company_name, class: "form-control"
   .form-group
-    = f.label :url, class: 'col-sm-2 control-label'
+    = f.label :url, "URL", class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :url, class: "form-control"
+      = f.text_field :url, class: "form-control", placeholder: 'http://example.com/terms'
   .form-group
-    = f.label :document_type_id, class: "col-sm-2 control-label"
+    = f.label :document_type_id, "Type", class: "col-sm-2 control-label"
     .col-sm-10
       = f.collection_select :document_type_id, DocumentType.order(:category), :id, :category, {}, class: "form-control"
   .form-group
     = f.label :version, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :version, class: "form-control", placeholder: 'Last updated, Version Number'
+      = f.text_field :version, class: "form-control", placeholder: 'Version Number or Last Updated Date'
   .form-group
     = f.label :description, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :description, class: "form-control"
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit "Add Contract/Agreement", class: 'btn btn-primary'
+      = f.submit class: 'btn btn-primary'
+
+      = link_to documents_path, class: 'btn btn-default' do
+        %span.fa.fa-fw.fa-times
+        Cancel
