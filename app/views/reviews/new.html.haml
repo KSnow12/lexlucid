@@ -1,11 +1,24 @@
 .page-header
-  %h1 New Review
+  %h1 New Review: #{@document.name}
+
+%dl.dl-horizontal
+  %dt Company:
+  %dd= @document.company_name
+  %dt URL:
+  %dd= link_to @document.url, @document.url, target: "_blank"
+  %dt Type:
+  %dd= @document.document_type.category
+  %dt Description:
+  %dd= @document.description
+  %dt Document Version:
+  %dd= @document.version
 
 = form_for [@document, @review], html: { class: "form-horizontal", role: "form" } do |f|
   = render partial: 'form', locals: {f: f}
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Add Review", class: 'btn btn-primary'
+
       = link_to documents_path, class: 'btn btn-default' do
         %span.fa.fa-fw.fa-times
         Cancel
