@@ -8,18 +8,7 @@
       %span.glyphicon.glyphicon-pencil
       Edit
 
-  %h1= [@user.first_name, @user.last_name].join(' ')
-
-%dl.dl-horizontal
-  %dt Email:
-  %dd= @user.email
-  %dt Website:
-  %dd= link_to @user.website, @user.website, target: '_blank'
-  %dt Company name:
-  %dd= @user.company_name
-  - if @user.description.present?
-    %dt Description:
-    %dd= @user.description
+  %h1= [@user.first_name, @user.last_name[0]].join(' ')
 
 %h2 Reviews
 %table.table.table-striped.table-bordered.table-hover
