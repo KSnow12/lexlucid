@@ -1,24 +1,22 @@
-.page-header
-  = link_to new_bullet_point_path, class: 'btn btn-primary' do
+.float_right
+  = link_to new_bullet_point_path, class: 'btn' do
     %span.fa.fa-fw.fa-plus
     New Bullet Point
-  %h1 Bullet Points
 
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
+%h1 Bullet Points
+
+%table.table_index
+  %thead
+    %tr
+      %th Layman's Title
+      %th{colspan: '2'} Layman's Description
+
+  %tbody
+    - @bullet_points.each do |bullet_point|
       %tr
-        %th Layman's Title
-        %th Layman's Description
-        %th
-        %th
-        %th
-
-    %tbody
-      - @bullet_points.each do |bullet_point|
-        %tr
-          %td= bullet_point.human_title
-          %td= bullet_point.human_description
-          %td= link_to 'View', bullet_point
-          %td= link_to 'Edit', edit_bullet_point_path(bullet_point)
-          %td= link_to 'Delete', bullet_point, data: { confirm: 'Are you sure?' }, method: :delete
+        %td{data: {'col-header': 'Title:'}}= link_to bullet_point.human_title, bullet_point
+        %td{data: {'col-header': 'Desc:'}}= bullet_point.human_description
+        %td.cell_collapse
+          %ul.inline_list
+            %li= link_to 'Edit', edit_bullet_point_path(bullet_point)
+            %li= link_to 'Delete', bullet_point, data: { confirm: 'Are you sure?' }, method: :delete

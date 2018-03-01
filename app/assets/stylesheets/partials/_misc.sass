@@ -1,0 +1,360 @@
+
+img
+  max-width: 100%
+  height: auto
+
+.image_100 img
+  width: 100%
+
+@media screen and (min-width: $app-media-xs)
+  .float_left
+    float: left
+    margin-right: 1.66667em
+
+  .float_right
+    float: right
+    margin-left: 1.66667em
+
+.clear
+  clear: both
+
+hr
+  clear: both
+  border: none
+  border-bottom: $app-border
+  height: 0
+  margin: $app-margin-medium 0
+  padding: 0
+
+.box
+  @include app-box
+  border: 1px solid $app-gray-medium
+
+@media screen and (min-width: $app-media-xs)
+  .media_gt_xs_box
+    @include app-box
+    border: 1px solid $app-gray-medium
+
+.box_gray
+  @include app-box
+  background: $app-gray-light
+
+.box_alert, .alert-info, .alert-warning
+  @include app-box
+  background: $app-yellow
+
+.box_alert_success, .alert-success
+  @include app-box
+  background: $app-green
+  color: #fff
+
+.box_alert_error, .alert-danger
+  @include app-box
+  background: $app-red
+  color: #fff
+
+.box_padding_small
+  padding: 0.6em
+  @media screen and (min-width: $app-media-xs)
+    padding: 0.75em
+
+.row
+  padding-top: 1.5em
+  padding-bottom: 1.5em
+  @media screen and (min-width: $app-media-xs)
+    padding-top: 3em
+    padding-bottom: 3em
+
+.row_padding_large
+  padding-top: 3em
+  padding-bottom: 3em
+  @media screen and (min-width: $app-media-xs)
+    padding-top: 6em
+    padding-bottom: 6em
+
+.bg_blue
+  background: $app-blue
+
+.bg_blue_darker_10, .bg_blue_dark
+  background: $app-blue-dark
+
+.bg_blue_darker_20
+  background: #203245
+
+.bg_green
+  background: $app-green
+
+.bg_white
+  background: #fff
+
+.bg_lighter_10
+  background: rgba(255,255,255,0.10)
+
+.bg_darker_10
+  background: $app-gray //rgba(0,0,0,0.10)
+
+.bg_darker_20
+  background: #ced5d9 //darken(#e3e7ea, 5) //rgba(0,0,0,0.20)
+
+@media screen and (min-width: $app-media-xs)
+  .border_left
+    border-left: $app-border
+
+  .border_right
+    border-right: $app-border
+
+  .align_left, .alignleft
+    float: left
+    margin-right: 1.5em
+
+  .align_right, .alignright
+    float: right
+    margin-left: 1.5em
+
+  .align_center, .aligncenter
+    display: block
+    float: none
+    margin-left: auto
+    margin-right: auto
+
+  .width_20
+    width: 20%
+
+  .width_25
+    width: 25%
+
+  .width_33
+    width: 33.33%
+
+  .width_35
+    width: 35%
+
+  .width_40
+    width: 40%
+
+  .width_45
+    width: 45%
+
+  .width_50
+    width: 50%
+
+  .width_55
+    width: 55%
+
+  .width_60
+    width: 60%
+
+  .width_65
+    width: 65%
+
+  .width_75
+    width: 75%
+
+  .width_100
+    width: 100%
+
+ul, ol
+  margin: 0 0 $app-margin-small 1em
+  padding: 0
+
+ul
+  // list-style: circle
+
+ol
+  padding-left: 2.4em
+
+li
+  margin-bottom: 0.6em
+
+.remove_bullets
+  list-style: none
+  margin-left: 0
+
+.inline_list
+  list-style: none
+  display: inline-block
+  margin: 0
+  padding: 0
+  li
+    display: inline-block
+    border-right: 1px solid rgba(0,0,0,0.2)
+    margin: 0 0.6em 0 0
+    padding: 0 0.8em 0 0
+    &:last-of-type
+      border-right: none
+      margin-right: 0
+      padding-right: 0
+
+// WordPress unordered list menu
+.menu
+  list-style: none
+  margin: 0
+
+.img_border
+  border: 1px solid $app-gray-medium
+
+blockquote
+  position: relative
+  &:before
+    content: "“"
+    position: absolute
+    right: 101.5%
+    opacity: 0.4
+    font-family: Georgia,serif
+    font-size: 3.3em
+    line-height: 0.95
+    font-weight: normal
+  @media screen and (max-width: #{$app-media-xs})
+    text-indent: 1.61em
+    &:before
+      left: -0.52em
+      right: auto
+
+code, pre
+  border: 1px solid $app-gray-medium
+  @include border-radius($app-border-radius-small)
+  padding: 2px 3px
+  background-color: $app-gray-light
+  font-family: "Courier New", Courier, monospace
+  font-size: 0.95em
+
+pre
+  margin-bottom: 1.5em
+  padding: 8px
+  line-height: 150%
+  white-space: pre-wrap
+
+.highlight
+  padding: 2px 0
+  background-color: $app-yellow
+
+.drop_cap
+  float: left
+  margin: 0.33rem 0.6rem 0 0
+  padding: 0 0.17em 0.1em
+  font-size: 2.25em
+  line-height: 1
+  color: #fff
+  background-color: $app-font-color
+
+.responsive_video
+  position: relative
+  width: 100%
+  height: 0px
+  padding-top: 25px
+  padding-bottom: 52%
+
+  iframe
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+
+//  keep these at the bottom
+//////////////////////////
+
+.break_xs
+  margin-bottom: $app-margin-small/2
+
+.break_small
+  margin-bottom: $app-margin-small
+
+.break_medium
+  margin-bottom: $app-margin-medium
+
+.break_large
+  margin-bottom: $app-margin-medium
+  @media screen and (min-width: $app-media-xs)
+    margin-bottom: $app-margin-large
+
+.break_xl
+  margin-bottom: $app-margin-large*1.7
+
+@media screen and (max-width: $app-media-small) and (min-width: $app-media-xs)
+  .media_small_break_large
+    margin-bottom: $app-margin-large
+
+@media screen and (max-width: $app-media-xs)
+  .media_xs_flexbox
+    @include flexbox
+    @include flex-direction
+    > div
+      @include box-sizing(border-box)
+      display: block
+      float: none !important
+      width: 100%
+
+  .media_xs_order_one
+    @include flex-order(0)
+
+  .media_xs_order_two
+    @include flex-order(1)
+
+  .media_xs_order_three
+    @include flex-order(2)
+
+  .media_xs_order_four
+    @include flex-order(3)
+
+  .media_xs_break_none
+    margin-bottom: 0
+
+  .media_xs_break_small
+    margin-bottom: $app-margin-small
+
+  .media_xs_break_medium
+    margin-bottom: $app-margin-medium
+
+  .media_xs_break_large
+    margin-bottom: $app-margin-large
+
+  .media_xs_break_xl
+    margin-bottom: $app-margin-large*1.25
+
+  .media_xs_bleed
+    display: block
+    margin-left: -$app-media-xs-padding
+    margin-right: -$app-media-xs-padding
+
+  .media_xs_horz_padding
+    padding: 0 4.5em
+
+  .media_xs_text_small
+    font-size: $app-font-small
+
+  .media_xs_text_left
+    text-align: left
+
+  .media_xs_text_center
+    text-align: center
+
+  .media_xs_text_right
+    text-align: right
+
+  .media_xs_hide
+    display: none
+
+  .media_xs_hide_important
+    display: none !important
+
+  .media_xs_remove_padding
+    padding: 0
+
+.remove_border_bottom
+  border-bottom: none
+
+.remove_margin
+  margin: 0
+
+.remove_margin_top
+  margin-top: 0
+
+.media_xs_show
+  display: none
+  @media screen and (max-width: $app-media-xs)
+    display: inherit
+
+.hidden, .hide
+  display: none

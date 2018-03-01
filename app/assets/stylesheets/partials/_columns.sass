@@ -1,0 +1,181 @@
+
+$app-col-margin: 3%
+
+@media screen and (max-width: $app-media-xs)
+  .media_xs_cols
+    clear: both
+    margin-left: $app-col-margin / -2
+    margin-right: $app-col-margin / -2
+    &:after
+      visibility: hidden
+      display: block
+      font-size: 0
+      content: " "
+      clear: both
+      height: 0
+    > div
+      float: left
+      box-sizing: border-box
+      min-height: 1px
+      padding-left: $app-col-margin / 2
+      padding-right: $app-col-margin / 2
+      > *:first-child
+        margin-top: 0
+    p:empty
+      display: none
+
+  .media_xs_cols_halves > div:nth-of-type(2n+1)
+    clear: left
+
+  .media_xs_cols_thirds > div:nth-of-type(3n+1)
+    clear: left
+
+  .media_xs_col_25
+    width: 25%
+
+  .media_xs_col_30
+    width: 30%
+
+  .media_xs_col_33
+    width: (1/3)*100%
+
+  .media_xs_col_40
+    width: 40%
+
+  .media_xs_col_50
+    width: 50%
+
+  .media_xs_col_60
+    width: 60%
+
+  .media_xs_col_66
+    width: (2/3)*100%
+
+  .media_xs_col_70
+    width: 70%
+
+  .media_xs_col_75
+    width: 75%
+
+@media screen and (min-width: $app-media-xs)
+  .cols
+    clear: both
+    margin-left: $app-col-margin / -2
+    margin-right: $app-col-margin / -2
+    &:after
+      visibility: hidden
+      display: block
+      font-size: 0
+      content: " "
+      clear: both
+      height: 0
+    > div
+      float: left
+      box-sizing: border-box
+      min-height: 1px
+      padding-left: $app-col-margin / 2
+      padding-right: $app-col-margin / 2
+      > *:first-child
+        margin-top: 0
+    p:empty
+      display: none
+
+    // .col
+    //   add a width for layout
+
+  .cols_halves > div:nth-of-type(2n+1)
+    clear: left
+
+  .cols_thirds > div:nth-of-type(3n+1)
+    clear: left
+
+  .cols_fourths > div:nth-of-type(4n+1)
+    clear: left
+
+  .cols_fifths > div:nth-of-type(5n+1)
+    clear: left
+
+  .cols_padding_large
+    margin-left: -$app-col-margin
+    margin-right: -$app-col-margin
+    > div
+      padding-left: $app-col-margin
+      padding-right: $app-col-margin
+
+  .col_20
+    width: 20%
+
+  .col_25, .col_one_fourth
+    width: 25%
+
+  .col_30
+    width: 30%
+
+  .col_33, .col_one_third
+    width: (1/3)*100%
+
+  .col_40
+    width: 40%
+
+  .col_45
+    width: 45%
+
+  .col_50, .col_half, .col_two_fourths
+    width: 50%
+
+  .col_55
+    width: 55%
+
+  .col_60
+    width: 60%
+
+  .col_66, .col_two_thirds
+    width: (2/3)*100%
+
+  .col_70
+    width: 70%
+
+  .col_75, .col_three_fourths
+    width: 75%
+
+  .col_80
+    width: 80%
+
+@media screen and (min-width: $app-media-xs) and (max-width: $app-media-small)
+  .col_one_fourth
+    width: (100 - $app-col-margin) / 2
+    &:nth-of-type(even)
+      margin-right: 0
+
+@media screen and (max-width: #{$app-media-xs})
+  .cols:not(.media_xs_cols)
+    @include flexbox
+    @include flex-direction
+
+@media screen and (max-width: #{$app-media-xs})
+  .media_xs_cols_flow_two, .media_xs_cols_two_flow
+    @include column-count(2)
+    @include column-gap(2em)
+
+@media screen and (min-width: #{$app-media-xs})
+  .cols_flow_two, .cols_two_flow
+    @include column-count(2)
+    @include column-gap(2em)
+    margin-bottom: $app-margin-small
+    p
+      margin-bottom: 0
+      &:nth-child(n+2)
+        text-indent: 1.5em
+
+  .cols_flow_three, .cols_three_flow
+    @include column-count(3)
+    @include column-gap(2em)
+    margin-bottom: $app-margin-small
+    p
+      margin-bottom: 0
+      &:nth-child(n+2)
+        text-indent: 1.5em
+
+  .cols_flow_four, .cols_four_flow
+    @include column-count(4)
+    @include column-gap($app-margin-small)

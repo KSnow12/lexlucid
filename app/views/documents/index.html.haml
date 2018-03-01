@@ -1,81 +1,38 @@
-%nav.navbar.navbar-fixed-top{role: "navigation", style: 'margin-bottom:0;'}
-  .container
-    .navbar-header
-      %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"} }
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+.content_width
+  - if params[:q].present?
+    = link_to documents_path, class: 'btn float_right' do
+      %span.fa.fa-fw.fa-times
+      Clear Search
 
-    #navbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav.pull-right
-        -# %li.active
-          = link_to "Documents", documents_path
-        - if !logged_in? && !has_logged_in?
-          %li
-            = link_to 'Attorney Registration', new_user_path
-        - if logged_in? and current_user.admin?
-          %li= link_to 'Document Types', document_types_path
-          %li= link_to 'Bullet Points', bullet_points_path
-          %li= link_to 'Users', users_path
+    %h2 Results for: '#{params[:q]}'
+
+  - else
+    %h2 Recently Reviewed Contracts
+
+  %table.table_index
+    %thead
+      %tr
+        %th Contract / Agreement
+        %th Company
+        %th Version / Updated
+        %th.text_right Reviews
+        %th{style: "width: 120px;"} Score
         - if logged_in?
-          %li= link_to "Add Contract", new_document_path
-          %li= link_to [current_user.first_name, current_user.last_name].join(' '), current_user
-        - else
-          %li= link_to 'Login', '/login'
+          %th
 
-.home_header.break_medium
-  .container
-    .break_large
-      %a.remove_border_bottom{href: '/'}
-        %img.home_logo{src: asset_path('lexlucid-logo-vector.svg')}
-
-      %h1 Grading contracts for the greater good.
-
-    .text_xl
-      = form_tag documents_path, method: :get do
-        = text_field_tag :q, params[:q], class: 'home_header_input', placeholder: 'Find a Contract'
-        = submit_tag "Search", class: 'home_header_submit'
-
-.container
-  .page-header
-    - if params[:q].present?
-      = link_to documents_path, class: 'btn btn-default pull-right' do
-        %span.fa.fa-fw.fa-times
-        Clear Search
-
-      %h2 Results for: '#{params[:q]}'
-
-    - else
-      %h2 Recently Reviewed Contracts
-
-
-
-  .table-responsive
-    %table.table.table-striped.table-bordered.table-hover
-      %thead
+    %tbody
+      - i = 0
+      - @documents.each do |document|
         %tr
-          %th Contract / Agreement
-          %th Company
-          %th Version / Updated
-          %th Reviews
-          %th{style: "width: 120px;"} Score
+          %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
+          %td{data: {'col-header': 'Company:'}}= document.company_name
+          %td{data: {'col-header': 'Version:'}}= document.version
+          %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
+          %td.cell_collapse{data: {'col-header': 'Rating:'}}
+            - if document.reviews.any?
+              %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
+
           - if logged_in?
-            %th
-
-      %tbody
-        - i = 0
-        - @documents.each do |document|
-          %tr
-            %td= link_to document.name, document
-            %td= document.company_name
-            %td= document.version
-            %td.text_right= document.reviews.count
-            %td
-              - if document.reviews.any?
-                .js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
-
-            - if logged_in?
-              %td.cell_collapse
-                - if !current_user.has_reviewed_document?(document)
-                  = link_to 'Add Review', new_document_review_path( document)
+            %td.cell_collapse
+              - if !current_user.has_reviewed_document?(document)
+                = link_to 'Add Review', new_document_review_path( document)

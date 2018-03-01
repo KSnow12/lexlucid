@@ -1,0 +1,35 @@
+
+.btn, input[type="submit"], button
+  width: 100%
+  box-sizing: border-box
+  display: block
+  margin-bottom: 0.6em
+  padding: 0.95em 1.9em //0.7em 1.2em
+  color: #fff
+  border: 1px solid transparent
+  border-radius: $app-border-radius-small
+  text-decoration: none
+  text-align: center
+  line-height: 1
+  background: $app-black
+  @include transition(all 0.3s ease 0s)
+  &:hover, &:active
+    border-color: $app-black
+    background: #fff
+    color: $app-font-color
+  @media screen and (min-width: $app-media-xs)
+    display: inline-block
+    width: auto
+    +
+      .btn, input[type="submit"], button
+        margin-left: 0.3em
+
+.btn_gray, input.btn_gray[type="submit"]
+  border: 1px solid $app-gray-medium
+  background: #fff
+  color: $app-font-color
+  &:hover
+    border: 1px solid $app-gray-dark
+    background: $app-gray-medium
+  &:active
+    background: $app-gray-dark

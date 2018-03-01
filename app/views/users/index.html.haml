@@ -1,23 +1,19 @@
-.page-header
-  %h1 Users
+%h1 Users
 
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
+%table.table_index
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th{colspan: '2'} Company
+
+  %tbody
+    - @users.each do |user|
       %tr
-        %th Name
-        %th Email
-        %th Company
-        %th
-        %th
-        %th
-
-    %tbody
-      - @users.each do |user|
-        %tr
-          %td= [user.first_name, user.last_name].join(' ')
-          %td= user.email
-          %td= user.company_name
-          %td= link_to 'View', user
-          %td= link_to 'Edit', edit_user_path(user)
-          %td= link_to 'Delete', user, data: { confirm: 'Are you sure?' }, method: :delete
+        %td{data: {'col-header': 'Name:'}}= link_to [user.first_name, user.last_name].join(' '), user
+        %td{data: {'col-header': 'Email:'}}= user.email
+        %td{data: {'col-header': 'Company:'}}= user.company_name
+        %td.cell_collapse
+          %ul.inline_list
+            %li= link_to 'Edit', edit_user_path(user)
+            %li= link_to 'Delete', user, data: { confirm: 'Are you sure?' }, method: :delete

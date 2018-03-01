@@ -1,0 +1,148 @@
+
+html
+  overflow-y: scroll // show scrollbar regardless of page height
+  height: 100%
+
+body
+  height: 100%
+  cursor: default
+  background: $app-gray-light
+
+.content_width
+  overflow: hidden
+  padding-left: $app-media-xs-padding
+  padding-right: $app-media-xs-padding
+  @media screen and (min-width: $app-media-xs)
+    overflow: visible
+    max-width: $app-container
+    margin-left: auto
+    margin-right: auto
+    // padding-left: 15rem
+    // padding-right: 15rem
+
+.app_content
+  padding: 1.5em 0 2em
+  background: #fff
+  @media screen and (min-width: $app-media-xs)
+    padding: 2em 0 8em
+
+.app_header
+  overflow: hidden
+  background: $app-yellow
+  padding: 1em 0 0
+  table
+    margin-bottom: 1em
+  @media screen and (min-width: $app-media-xs)
+    padding: 1.8em 0
+    table
+      float: left
+      width: auto
+      margin: 0
+
+.app_header_logo
+  width: 15em
+  margin-right: 1em
+  &:hover
+    opacity: 0.6
+
+.header_nav
+  display: none
+  margin: 1em 0 0 -#{$app-media-xs-padding}
+  a
+    display: block
+    width: 100%
+    padding: 0.8em $app-media-xs-padding
+    text-decoration: none
+    border-top: 1px solid rgba(0,0,0,0.1)
+    border-bottom: none
+    &:last-of-type
+      border-bottom: 1px solid rgba(0,0,0,0.1)
+  @media screen and (min-width: $app-media-xs)
+    margin: 0
+    display: block
+    float: right
+    a
+      float: left
+      width: auto
+      margin: 0
+      padding: 0.8em 1em
+      border: none
+      border-radius: 5px
+      background: transparent
+      color: $app-font-color
+      &:last-of-type
+        border: none
+      &:hover, &:focus
+        background: $app-black
+        color: #fff
+
+.header_mobile_nav_button
+  display: inline-block
+  margin-left: 1.8rem
+  padding: 0.1em 0.2em
+  border: none
+  border-radius: $app-border-radius-small
+  font-size: 1.3em
+  background: $app-black
+  color: $app-yellow
+  &:hover
+    color: $app-yellow
+  @media screen and (min-width: $app-media-xs)
+    display: none
+
+.home_header
+  padding: 0 0 1em 0
+  background: $app-yellow
+  @media screen and (min-width: $app-media-xs)
+    padding: 3em 0 6em 0
+
+.home_logo
+  width: 46em
+
+@media screen and (min-width: $app-media-xs)
+  .home_header_indent
+    margin-left: 10.6rem
+
+#home_header_input, #home_header_submit
+  box-sizing: border-box
+  padding: 0.5em 0.6em
+  width: 100%
+  border: 2px solid #fff
+  border-right: none
+  border-radius: $app-border-radius-small
+  background-color: #fff
+  line-height: 1.1
+  // &:focus
+  //   //background-color: #fff
+  //   border-color: $app-blue
+
+#home_header_submit
+  padding-left: 1.7em
+  padding-right: 1.7em
+  border: 2px solid $app-black !important
+  background: $app-black
+  color: #fff
+  &:hover, &:focus
+    background: $app-yellow
+    color: $app-black
+
+@media screen and (min-width: $app-media-xs)
+  #home_header_input, #home_header_submit
+    font-size: 1.777em
+
+  #home_header_input
+    float: left
+    max-width: none
+    width: 17em
+    border-radius: 7px 0 0 7px
+
+  #home_header_submit
+    width: auto
+    border-radius: 0 7px 7px 0
+
+.footer
+  padding-top: 2rem
+  padding-bottom: 2rem
+  @media screen and (min-width: $app-media-xs)
+    padding-top: 2rem
+    padding-bottom: 2rem

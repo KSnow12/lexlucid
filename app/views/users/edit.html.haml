@@ -1,10 +1,12 @@
-.page-header
-  = link_to users_path, class: 'btn btn-default' do
-    %span.fa.fa-fw.fa-arrow-left
-    Back
-  = link_to @user, class: 'btn btn-primary' do
-    %span.fa.fa-fw.fa-info-circle
-    View
-  %h1 Editing User
+/ .float_right
+/   = link_to users_path, class: 'btn btn_gray' do
+/     %span.fa.fa-fw.fa-arrow-left
+/     Back
+
+/   = link_to @user, class: 'btn' do
+/     %span.fa.fa-fw.fa-info-circle
+/     View
+
+%h1 Editing User
 
 = render 'form'
