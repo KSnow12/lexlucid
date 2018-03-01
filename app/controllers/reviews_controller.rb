@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin_or_self, only: [:edit, :update, :destroy]
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -80,6 +81,12 @@ class ReviewsController < ApplicationController
   end
 
   private
+    def require_admin_or_self
+      return true if current_user.admin? || current_user.id == @review.user_id
+      flash[:error] = "You do not have permission to view that page"
+      redirect_to root_path
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
