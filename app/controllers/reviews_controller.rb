@@ -1,14 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
-  # GET /reviews
-  # GET /reviews.json
-  def index
-    redirect_to documents_path
-    return
-    @reviews = Review.all
-  end
-
   # GET /reviews/1
   # GET /reviews/1.json
   def show
@@ -18,6 +10,12 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @document = Document.find(params[:document_id])
+
+    if current_user.has_reviewed_document?(@document)
+      redirect_to @document, notice: "You have already reviewed this document. You can go to your profile to update the review if you wish."
+      return
+    end
+
     @review = @document.reviews.build
 
     build_review_children
@@ -33,6 +31,12 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @document = Document.find(params[:document_id])
+
+    if current_user.has_reviewed_document?(@document)
+      redirect_to @document, notice: "You have already reviewed this document. You can go to your profile to update the review if you wish."
+      return
+    end
+
     @review = @document.reviews.build(review_params)
     @review.user = current_user
 
@@ -55,7 +59,11 @@ class ReviewsController < ApplicationController
         format.html { redirect_to user_path(@review.user_id), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
-        format.html { render :edit }
+        format.html {
+          @document = @review.document
+          build_review_children
+          render :edit
+        }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end

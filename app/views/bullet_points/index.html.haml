@@ -1,9 +1,9 @@
 .float_right
   = link_to new_bullet_point_path, class: 'btn' do
     %span.fa.fa-fw.fa-plus
-    New Bullet Point
+    New Issue
 
-%h1 Bullet Points
+%h1 Reviewable Issues
 
 %table.table_index
   %thead
@@ -14,8 +14,8 @@
   %tbody
     - @bullet_points.each do |bullet_point|
       %tr
-        %td{data: {'col-header': 'Title:'}}= link_to bullet_point.human_title, bullet_point
-        %td{data: {'col-header': 'Desc:'}}= bullet_point.human_description
+        %td{data: {'col-header': 'Title:'}}= bullet_point.human_title
+        %td{data: {'col-header': 'Desc:'}}= simple_format bullet_point.human_description
         %td.cell_collapse
           %ul.inline_list
             %li= link_to 'Edit', edit_bullet_point_path(bullet_point)

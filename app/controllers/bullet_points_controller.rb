@@ -1,15 +1,11 @@
 class BulletPointsController < ApplicationController
   before_action :set_bullet_point, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   # GET /bullet_points
   # GET /bullet_points.json
   def index
-    @bullet_points = BulletPoint.all
-  end
-
-  # GET /bullet_points/1
-  # GET /bullet_points/1.json
-  def show
+    @bullet_points = BulletPoint.order(human_title: :asc)
   end
 
   # GET /bullet_points/new
@@ -42,7 +38,7 @@ class BulletPointsController < ApplicationController
   def update
     respond_to do |format|
       if @bullet_point.update(bullet_point_params)
-        format.html { redirect_to @bullet_point, notice: 'Bullet point was successfully updated.' }
+        format.html { redirect_to bullet_points_path, notice: 'Bullet point was successfully updated.' }
         format.json { render :show, status: :ok, location: @bullet_point }
       else
         format.html { render :edit }

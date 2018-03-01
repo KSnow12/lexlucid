@@ -1,0 +1,12 @@
+- if !logged_in? && !has_logged_in?
+  = link_to 'Attorney Registration', new_user_path
+- if logged_in?
+  - if current_user.admin?
+    = link_to 'Document Types', document_types_path
+    = link_to 'Issues', bullet_points_path
+    = link_to 'Users', users_path
+
+  = link_to "Add Contract", new_document_path
+  = link_to [current_user.first_name, current_user.last_name].join(' '), current_user
+- else
+  = link_to 'Login', '/login'

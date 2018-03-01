@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   root to: "documents#index"
-  resources :bullet_points
-  resources :ratings
-  resources :document_types
-  resources :reviews, only: [:index]
+  resources :bullet_points, except: [:show]
+  resources :document_types, except: [:show]
   resources :documents, shallow: true do
-    resources :reviews, except: [:index]
+    resources :reviews, only: [:new, :create, :edit, :update]
   end
   resources :users
 

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, except: [:index, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:show, :new, :create, :login, :logout, :clear]
+  before_action :require_admin, only: [:index, :destroy]
+  before_action :require_admin_or_self, only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -91,6 +93,13 @@ class UsersController < ApplicationController
   end
 
   private
+    def require_admin_or_self
+      #raise "!#{require_admin} && #{current_user.id} != #{@user.id} = #{!require_admin && current_user.id != @user.id}"
+      return true if current_user.admin? || current_user.id == @user.id
+      flash[:error] = "You do not have permission to view that page"
+      redirect_to root_path
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

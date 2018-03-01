@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def has_reviewed_document?(document)
-    document.reviews.map(&:user_id).include?(self.id)
+    document.reviews.where(user_id: self.id).exists?
   end
 
   def website

@@ -1,15 +1,11 @@
 class DocumentTypesController < ApplicationController
   before_action :set_document_type, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   # GET /document_types
   # GET /document_types.json
   def index
-    @document_types = DocumentType.all
-  end
-
-  # GET /document_types/1
-  # GET /document_types/1.json
-  def show
+    @document_types = DocumentType.order(category: :asc)
   end
 
   # GET /document_types/new
@@ -42,7 +38,7 @@ class DocumentTypesController < ApplicationController
   def update
     respond_to do |format|
       if @document_type.update(document_type_params)
-        format.html { redirect_to @document_type, notice: 'Document type was successfully updated.' }
+        format.html { redirect_to document_types_path, notice: 'Document type was successfully updated.' }
         format.json { render :show, status: :ok, location: @document_type }
       else
         format.html { render :edit }

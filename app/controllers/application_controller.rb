@@ -30,4 +30,10 @@ class ApplicationController < ActionController::Base
       flash[:error] = "Must be logged in"
       redirect_to '/login'
     end
+
+    def require_admin
+      return true if logged_in? && current_user.admin?
+      flash[:error] = "You do not have permission to view that page"
+      redirect_to root_path
+    end
 end

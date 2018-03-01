@@ -13,7 +13,7 @@
   %tbody
     - @document_types.each do |document_type|
       %tr
-        %td{data: {'col-header': 'Type:'}}= link_to document_type.category, document_type
+        %td{data: {'col-header': 'Type:'}}= document_type.category
         %td.cell_collapse
           %ul.inline_list
             %li= link_to 'Edit', edit_document_type_path(document_type)

@@ -5,6 +5,8 @@ class Review < ApplicationRecord
 
   accepts_nested_attributes_for :ratings, reject_if: ->(attributes) {attributes[:bullet_point_id].blank? && attributes[:bullet_point_id].blank? && attributes[:description].blank?}
 
+  validate :minimum_one_rating
+
   def self.summarize_scores(document)
     Rating.joins(:review).
     select("""
@@ -17,5 +19,14 @@ class Review < ApplicationRecord
     order("COUNT(bullet_point_id) DESC").
     preload(:bullet_point).
     limit(5)
+  end
+
+  private
+
+  # validates
+  def minimum_one_rating
+    if ratings.size <= 0
+      errors.add(:ratings, "- You must grade at least one issue to submit a review")
+    end
   end
 end

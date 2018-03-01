@@ -31,6 +31,6 @@
       %td
         = f.submit class: 'btn'
 
-        = link_to documents_path, class: 'btn btn_gray' do
+        = link_to @document.new_record? ? documents_path : @document, class: 'btn btn_gray' do
           %span.fa.fa-fw.fa-times
           Cancel

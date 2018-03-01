@@ -18,22 +18,12 @@
                 %span.fa.fa-fw.fa-bars
 
         %nav.header_nav.js_header_mobile_nav_button
-          - if !logged_in? && !has_logged_in?
-            = link_to 'Attorney Registration', new_user_path
-          - if logged_in? and current_user.admin?
-            = link_to 'Document Types', document_types_path
-            = link_to 'Bullet Points', bullet_points_path
-            = link_to 'Users', users_path
-          - if logged_in?
-            = link_to "Add Contract", new_document_path
-            = link_to [current_user.first_name, current_user.last_name].join(' '), current_user
-          - else
-            = link_to 'Login', '/login'
+          = render partial: 'layouts/navbar'
 
     .app_content
       .content_width
         - flash.each do |name, msg|
-          = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do
+          %div{class: "alert alert-#{name.to_sym == :error ? 'danger' : 'success'} alert-dismissable", role: "alert"}
             %button.close{type: "button", data: {dismiss: "alert"} }
               %span{aria: {hidden: "true"} } &times;
               %span.sr-only Close

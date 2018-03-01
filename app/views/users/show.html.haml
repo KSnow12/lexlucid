@@ -1,12 +1,14 @@
 .float_right
-  - if logged_in? && @user == current_user
-    = link_to edit_user_path(@user), class: 'btn' do
-      %span.fa.fa-fw.fa-pencil
-      Edit
+  - if logged_in?
+    - if @user == current_user || current_user.admin?
+      = link_to edit_user_path(@user), class: 'btn' do
+        %span.fa.fa-fw.fa-pencil
+        Edit
 
-    = link_to logout_path, class: 'btn btn_gray', data: {method: :delete, "no-turbolink" => true} do
-      Logout&nbsp;
-      %span.fa.fa-fw.fa-sign-out
+    - if @user == current_user
+      = link_to logout_path, class: 'btn btn_gray', data: {method: :delete, "no-turbolink" => true} do
+        Logout&nbsp;
+        %span.fa.fa-fw.fa-sign-out
 
 %h1= [@user.first_name, @user.last_name[0]].join(' ')
 

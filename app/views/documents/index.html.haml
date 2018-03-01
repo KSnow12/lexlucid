@@ -1,38 +1,37 @@
-.content_width
-  - if params[:q].present?
-    = link_to documents_path, class: 'btn float_right' do
-      %span.fa.fa-fw.fa-times
-      Clear Search
+- if params[:q].present?
+  = link_to documents_path, class: 'btn float_right' do
+    %span.fa.fa-fw.fa-times
+    Clear Search
 
-    %h2 Results for: '#{params[:q]}'
+  %h2 Results for: '#{params[:q]}'
 
-  - else
-    %h2 Recently Reviewed Contracts
+- else
+  %h2 Recently Reviewed Contracts
 
-  %table.table_index
-    %thead
+%table.table_index
+  %thead
+    %tr
+      %th Contract / Agreement
+      %th Company
+      %th Version / Updated
+      %th.text_right Reviews
+      %th{style: "width: 120px;"} Score
+      - if logged_in?
+        %th
+
+  %tbody
+    - i = 0
+    - @documents.each do |document|
       %tr
-        %th Contract / Agreement
-        %th Company
-        %th Version / Updated
-        %th.text_right Reviews
-        %th{style: "width: 120px;"} Score
+        %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
+        %td{data: {'col-header': 'Company:'}}= document.company_name
+        %td{data: {'col-header': 'Version:'}}= document.version
+        %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
+        %td.cell_collapse{data: {'col-header': 'Rating:'}}
+          - if document.reviews.any?
+            %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
+
         - if logged_in?
-          %th
-
-    %tbody
-      - i = 0
-      - @documents.each do |document|
-        %tr
-          %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
-          %td{data: {'col-header': 'Company:'}}= document.company_name
-          %td{data: {'col-header': 'Version:'}}= document.version
-          %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
-          %td.cell_collapse{data: {'col-header': 'Rating:'}}
-            - if document.reviews.any?
-              %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
-
-          - if logged_in?
-            %td.cell_collapse
-              - if !current_user.has_reviewed_document?(document)
-                = link_to 'Add Review', new_document_review_path( document)
+          %td.cell_collapse
+            - if !current_user.has_reviewed_document?(document)
+              = link_to 'Add Review', new_document_review_path( document)
