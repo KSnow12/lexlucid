@@ -19,7 +19,7 @@ td
       display: table-row
       &:before
         display: table-cell
-        padding: 0.15em 0.7em 0.15em 0
+        padding: 0.23em 0.7em 0.23em 0
         content: attr(data-col-header)
         font-weight: $app-font-bold
         text-align: right
@@ -68,10 +68,12 @@ td
     padding-bottom: 1.5em
   td
     display: block
+    &:last-child
+      padding-right: 0
 
 .table_padded_right
   td
-    padding-right: 0.7em
+    padding: 0.23em 0.7em 0.23em 0
     &:last-child
       padding-right: 0
 
@@ -82,12 +84,10 @@ td
     td
       display: table-cell
       padding: 0.3em 1.231em 1em 0
-      &:last-child
-        padding-right: 0
 
   .table_padded_right
     td
-      padding-right: 1.231em
+      padding: 0 1.231em 0 0
 
   .cell_collapse
     width: 1px
