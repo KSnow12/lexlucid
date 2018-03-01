@@ -1,6 +1,6 @@
 class Document < ApplicationRecord
   belongs_to :document_type
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates_uniqueness_of :url
 
   def self.search(query)
