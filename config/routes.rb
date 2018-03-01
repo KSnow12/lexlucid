@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :bullet_points, except: [:show]
   resources :document_types, except: [:show]
   resources :documents, shallow: true do
-    resources :reviews, only: [:new, :create, :edit, :update]
+    resources :reviews, except: [:show, :index]
   end
   resources :users
 
