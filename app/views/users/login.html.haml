@@ -1,21 +1,16 @@
-.page-header
-  %h1 Login
+%h1 Login
 
-#login-box{class: "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"}
-  .panel.panel-default
-    .panel-heading
-      .panel-title Enter your Credentials
-    .panel-body
+= form_tag '/login', action: 'POST', html: {class: "form-horizontal", role: "form"} do |f|
 
-      = form_tag '/login', action: 'POST', html: {class: "form-horizontal", role: "form"} do |f|
-
-        .input-group
-          %span.input-group-addon.glyphicon.glyphicon-user
-          = email_field_tag 'email', cookies[:email], class: "form-control", placeholder: "Email"
-        %br
-        .input-group
-          %span.input-group-addon.glyphicon.glyphicon-lock
-          = password_field_tag 'password', nil, class: "form-control", placeholder: "Password"
-        %br
-        .form-group
-          = submit_tag "Login", class: 'btn btn-primary btn-lg btn-block'
+  %table.table_padded
+    %tr
+      %td.cell_collapse
+        %label{for: 'email'} Email
+      %td= email_field_tag 'email', cookies[:email]
+    %tr
+      %td.cell_collapse
+        %label{for: 'password'} Password
+      %td= password_field_tag 'password', nil
+    %tr
+      %td
+      %td= submit_tag "Login", class: 'btn btn-primary btn-lg btn-block'

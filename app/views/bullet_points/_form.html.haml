@@ -10,18 +10,20 @@
         - @bullet_point.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
-    = f.label :human_title, "Layman's Title", class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :human_title, class: 'form-control'
-  .form-group
-    = f.label :human_description, "Layman's Description", class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_area :human_description, class: 'form-control'
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit class: 'btn btn-primary text_capitalize'
+  %table.table_padded
+    %tr
+      %td.cell_collapse= f.label :human_title, "Layman's Title"
+      %td= f.text_field :human_title
 
-      = link_to bullet_points_path, class: 'btn btn-default' do
-        %span.fa.fa-fw.fa-times
-        Cancel
+    %tr
+      %td.cell_collapse= f.label :human_description, "Layman's Description"
+      %td= f.text_area :human_description
+
+    %tr
+      %td.cell_collapse
+      %td
+        = f.submit class: 'btn text_capitalize'
+
+        = link_to bullet_points_path, class: 'btn btn_gray' do
+          %span.fa.fa-fw.fa-times
+          Cancel

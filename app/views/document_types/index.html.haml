@@ -1,22 +1,20 @@
-.page-header
-  = link_to new_document_type_path, class: 'btn btn-primary' do
+.float_right
+  = link_to new_document_type_path, class: 'btn' do
     %span.fa.fa-fw.fa-plus
-    New Document Type
-  %h1 Document Types
+    New Type
 
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
+%h1 Document Types
+
+%table.table_index
+  %thead
+    %tr
+      %th{colspan: '2'} Document Type
+
+  %tbody
+    - @document_types.each do |document_type|
       %tr
-        %th Document Type
-        %th
-        %th
-        %th
-
-    %tbody
-      - @document_types.each do |document_type|
-        %tr
-          %td= document_type.category
-          %td= link_to 'View', document_type
-          %td= link_to 'Edit', edit_document_type_path(document_type)
-          %td= link_to 'Delete', document_type, data: { confirm: 'Are you sure?' }, method: :delete
+        %td{data: {'col-header': 'Type:'}}= link_to document_type.category, document_type
+        %td.cell_collapse
+          %ul.inline_list
+            %li= link_to 'Edit', edit_document_type_path(document_type)
+            %li= link_to 'Delete', document_type, data: { confirm: 'Are you sure?' }, method: :delete

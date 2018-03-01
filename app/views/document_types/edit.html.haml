@@ -1,7 +1,8 @@
-.page-header
-  = link_to @document_type, class: 'btn btn-primary' do
-    %span.fa.fa-fw.fa-info-circle
-    View
-  %h1 Editing Document Type
+/ .float_right
+/   = link_to @document_type, class: 'btn' do
+/     %span.fa.fa-fw.fa-info-circle
+/     View
+
+%h1 Editing Document Type
 
 = render 'form'

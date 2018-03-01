@@ -1,51 +1,58 @@
-.page-header
+.float_right
   - if logged_in?
-    = link_to edit_document_path(@document), class: 'btn btn-primary' do
+    = link_to edit_document_path(@document), class: 'btn' do
       %span.fa.fa-fw.fa-pencil
-      Edit
+      Edit Document
   - if logged_in? && !current_user.has_reviewed_document?(@document)
-    = link_to new_document_review_path(@document), class: 'btn btn-primary' do
+    = link_to new_document_review_path(@document), class: 'btn' do
       %span.fa.fa-fw.fa-plus
       Add Review
-  %h1= @document.name
 
-%dl.dl-horizontal
-  %dt Company:
-  %dd= @document.company_name
-  %dt URL:
-  %dd= link_to @document.url, @document.url, target: "_blank"
-  %dt Type:
-  %dd= @document.document_type.category
-  %dt Description:
-  %dd= @document.description
-  %dt Document Version:
-  %dd= @document.version
+%h1= @document.name
+
+%table.table_padded_right.text_small.break_large
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Company:
+    %td= @document.company_name
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold URL:
+    %td= link_to @document.url, @document.url, target: "_blank"
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Type:
+    %td= @document.document_type.category
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Description:
+    %td= @document.description
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Version:
+    %td= @document.version
   - @summarized_ratings.each do |rating|
-    %dt= link_to rating.bullet_point.human_title, "#issue-#{rating.bullet_point_id}"
-    %dd
-      .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
-
-%h2 Scores
+    %tr
+      %td.cell_collapse.text_right.media_xs_text_right.text_bold= link_to rating.bullet_point.human_title, "#issue-#{rating.bullet_point_id}"
+      %td
+        .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
 
 - @summarized_ratings.each do |rating|
-  .panel.panel-default{id: "issue-#{rating.bullet_point_id}"}
-    .panel-body
-      %h3= rating.bullet_point.human_title
-      %h4= rating.bullet_point.human_description
-      %p Attorney Reviews: #{rating.reviews_done}
-      .js-star-readonly-score{data: {score: rating.avg_score}}
+  .box.media_xs_bleed.break_medium{id: "issue-#{rating.bullet_point_id}"}
+    %h3= rating.bullet_point.human_title
 
-      %div{class: "js-review-bullet-#{rating.bullet_point_id}"}
-        .table-responsive
-          %table.table.table-striped.table-bordered.table-hover
-            %thead
-              %tr
-                %th Attorney
-                %th Score
-                %th Explanation
-            %tbody
-              - rating.bullet_point.ratings.for_document(@document).preload(:review => :user).each do |lawyer_rating|
-                %tr
-                  %td.cell_collapse= link_to "#{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name[0]}", lawyer_rating.review.user
-                  %td.cell_collapse.text_right= lawyer_rating.score
-                  %td= simple_format lawyer_rating.description
+    %h4= rating.bullet_point.human_description
+
+    .break_small
+      %span.js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
+
+      %span.text_small{style: 'vertical-align:top;'} &nbsp; #{rating.reviews_done} Reviews
+
+    %div{class: "js-review-bullet-#{rating.bullet_point_id}"}
+      %table.table_index
+        %thead
+          %tr
+            %th Attorney
+            %th.text_right Score
+            %th Explanation
+        %tbody
+          - rating.bullet_point.ratings.for_document(@document).preload(:review => :user).each do |lawyer_rating|
+            %tr
+              %td.cell_collapse{data: {'col-header': 'Attorney:'}}= link_to "#{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name[0]}", lawyer_rating.review.user
+              %td.cell_collapse.text_right{data: {'col-header': 'Rating:'}}= lawyer_rating.score
+              %td{data: {'col-header': 'Desc:'}}= simple_format lawyer_rating.description

@@ -1,34 +1,36 @@
 = form_for @document, html: { class: "form-horizontal", role: "form" } do |f|
   = render partial: "shared/error_messages", locals: { object: @document }
 
-  .form-group
-    = f.label :name, "Title", class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :name, class: "form-control"
-  .form-group
-    = f.label :company_name, "Company", class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :company_name, class: "form-control"
-  .form-group
-    = f.label :url, "URL", class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :url, class: "form-control", placeholder: 'http://example.com/terms'
-  .form-group
-    = f.label :document_type_id, "Type", class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.collection_select :document_type_id, DocumentType.order(:category), :id, :category, {}, class: "form-control"
-  .form-group
-    = f.label :version, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :version, class: "form-control", placeholder: 'Version Number or Last Updated Date'
-  .form-group
-    = f.label :description, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_area :description, class: "form-control"
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit class: 'btn btn-primary'
+  %table.table_padded
+    %tr
+      %td.cell_collapse= f.label :name, "Title"
+      %td= f.text_field :name
 
-      = link_to documents_path, class: 'btn btn-default' do
-        %span.fa.fa-fw.fa-times
-        Cancel
+    %tr
+      %td.cell_collapse= f.label :company_name, "Company"
+      %td= f.text_field :company_name
+
+    %tr
+      %td.cell_collapse= f.label :url, "URL"
+      %td= f.text_field :url, placeholder: 'http://example.com/terms'
+
+    %tr
+      %td.cell_collapse= f.label :document_type_id, "Type", class: "col-sm-2 control-label"
+      %td= f.collection_select :document_type_id, DocumentType.order(:category), :id, :category, {}
+
+    %tr
+      %td.cell_collapse= f.label :version
+      %td= f.text_field :version, placeholder: 'Version Number or Last Updated Date'
+
+    %tr
+      %td.cell_collapse= f.label :description
+      %td= f.text_area :description
+
+    %tr
+      %td
+      %td
+        = f.submit class: 'btn'
+
+        = link_to documents_path, class: 'btn btn_gray' do
+          %span.fa.fa-fw.fa-times
+          Cancel

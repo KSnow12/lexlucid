@@ -1,0 +1,58 @@
+
+label
+  display: block
+  padding-bottom: 0.3em
+  font-weight: $app-font-bold
+  @media screen and (min-width: $app-media-xs)
+    padding: 0.5em 0
+    text-align: right
+
+input:not([type="submit"]), textarea, select
+  box-sizing: border-box
+  padding: 0.5em 0.6em
+  width: 100%
+  // max-width: 18em
+  border: 1px solid $app-gray-medium
+  border-radius: $app-border-radius-small
+  background-color: #fff
+  //@include transition(all 0.4s ease 0s)
+  &:focus
+    box-shadow: 0 0 0.5em $app-yellow
+    border-color: darken($app-yellow,15)
+
+textarea
+  height: 8em
+  max-width: none
+  width: 100%
+
+input[type="submit"], button
+  //padding: 0.4em
+  cursor: pointer
+  @include transition(all 0.4s ease 0s)
+
+input[type='checkbox'], input[type='radio']
+  width: auto
+  cursor: pointer
+  + label
+    display: inline
+    color: $app-font-color
+    cursor: pointer
+
+.field_inline_btn
+  position: relative
+  max-width: 30em
+  input[type="text"], input[type="email"]
+    padding-right: 7em
+    @include border-left-radius(4px)
+    @include border-right-radius(7px)
+    max-width: none
+  input[type="submit"]
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    margin-bottom: 0
+    height: auto
+    padding-top: 0
+    padding-bottom: 0.3em
+    @include border-left-radius(0)

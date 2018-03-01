@@ -1,25 +1,29 @@
-.page-header
-  %h1 Edit Review: #{@document.name}
+%h1 Edit Review: #{@document.name}
 
-%dl.dl-horizontal
-  %dt Company:
-  %dd= @document.company_name
-  %dt URL:
-  %dd= link_to @document.url, @document.url, target: "_blank"
-  %dt Type:
-  %dd= @document.document_type.category
-  %dt Description:
-  %dd= @document.description
-  %dt Document Version:
-  %dd= @document.version
+%table.table_padded_right.text_small.break_large
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Company:
+    %td= @document.company_name
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold URL:
+    %td= link_to @document.url, @document.url, target: "_blank"
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Type:
+    %td= @document.document_type.category
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Description:
+    %td= @document.description
+  %tr
+    %td.cell_collapse.text_right.media_xs_text_right.text_bold Version:
+    %td= @document.version
 
 = form_for @review, html: { class: "form-horizontal", role: "form" } do |f|
   = render partial: 'form', locals: {f: f}
 
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit "Update Review", class: 'btn btn-primary'
+      = f.submit "Update Review", class: 'btn'
 
-      = link_to user_path(@review.user_id), class: 'btn btn-default' do
+      = link_to user_path(@review.user_id), class: 'btn btn_gray' do
         %span.fa.fa-fw.fa-times
         Cancel
