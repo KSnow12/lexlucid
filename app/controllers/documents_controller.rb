@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :require_login, only: [:index, :show, :find]
 
   def index
     @documents = Document.search(params[:q])
@@ -11,7 +11,7 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
-    @summarized_ratings = Review.summarize_scores(@document)
+    @summarized_ratings = @document.summarize_scores
   end
 
   # GET /documents/new
@@ -69,6 +69,12 @@ class DocumentsController < ApplicationController
       format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /documents/find.json?document_url=url
+  def find
+    #@document = Document.find_by_url(params[:document_url])
+    @document = Document.find(2)
   end
 
   private

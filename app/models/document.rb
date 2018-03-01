@@ -13,6 +13,10 @@ class Document < ApplicationRecord
     scope.all.order("company_name DESC")
   end
 
+  def summarize_scores
+    @summarize_scores = Review.summarize_scores(self)
+  end
+
   def url
     the_url = super
     if the_url =~ %r{^https?://} || the_url.blank?
