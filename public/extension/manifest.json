@@ -16,6 +16,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-   "declarativeContent", "tabs", "http://localhost:3000/", "https://lexlucid.com/"
+   "declarativeContent", "tabs", "https://lexlucid.com/"
    ]
 }
