@@ -1,0 +1,44 @@
+- if document
+  %h1= document.name
+  %h3= document.company_name
+
+  - if document.reviews.any?
+    %p= "#{document.reviews.count} attorneys have reviewed this contract on LexLucid."
+    %p
+      %table.text_small
+        %tr
+          %td Score:
+          %td
+            .js-star-readonly-score{data: {score:  document.overall_score}}
+        - if document.version
+          %tr
+            %td Version:
+            %td= document.version
+
+    %hr
+
+    %table.text_small
+      %tr
+        %th Issue
+        %th Score
+      - document.summarize_scores.each do |rating|
+        %tr
+          %td= rating.bullet_point.human_title
+          %td.js-star-readonly-score{data: {score: rating.avg_score}}
+
+  %p
+    - if has_logged_in? && User.has_reviewed_document?(document, cookies[:email])
+      = link_to "Review this Document", new_document_review_url(@document), target: "_blank", class: "btn"
+    - else
+      = link_to "More Details on LexLucid", document_url(document), target: "_blank", class: "btn"
+
+- else
+  %h1 Document not Found
+
+  %p This contract needs to be graded, let us know!
+
+  %p
+    - if has_logged_in?
+      = link_to "Create this Document", new_document_url, target: "_blank", class: "btn js-new-document"
+    - else
+      = link_to "Visit LexLucid", root_url, target: "_blank", class: "btn"

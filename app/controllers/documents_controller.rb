@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @document = Document.new(name: params[:name], url: params[:url])
 
     if current_user.has_reviewed_document?(@document) && !current_user.admin?
       redirect_to document_path(@document), notice: "You have already reviewed that"
@@ -73,8 +73,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/find.json?document_url=url
   def find
-    #@document = Document.find_by_url(params[:document_url])
-    @document = Document.find(2)
+    @document = Document.find_by_url(params[:document_url])
   end
 
   private

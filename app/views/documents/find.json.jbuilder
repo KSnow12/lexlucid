@@ -1,1 +1,1 @@
-json.html render partial: 'documents/document_found.html.haml', locals:{ document: @document}
+json.html render partial: 'documents/extension.html.haml', locals:{ document: @document}
