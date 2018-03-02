@@ -27,8 +27,11 @@
           %td.js-star-readonly-score{data: {score: rating.avg_score}}
 
   %p
-    - if has_logged_in? && !User.has_reviewed_document?(document, cookies[:email])
-      = link_to "Review this Document", new_document_review_url(@document), target: "_blank", class: "btn"
+    - if has_logged_in?
+      - if review
+        = link_to "Edit Your Review", edit_review_url(review), target: "_blank", class: "btn"
+      - else
+        = link_to "Review this Document", new_document_review_url(document), target: "_blank", class: "btn"
     - else
       = link_to "More Details on LexLucid", document_url(document), target: "_blank", class: "btn"
 
