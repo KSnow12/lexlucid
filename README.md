@@ -6,8 +6,8 @@
 2. Go to your Chrome's extensions page: `chrome://extensions`.
 3. Check on the `Developer Mode` checkbox if it isn't checked.
 4. Click on the `Load unpacked extension..` button
-5. Select the folder of the extension: `public/extension`
-6. That's it! You will in the icon on your chrome.
+5. Select the folder of the extension: `public/extension`.
+6. That's it! You will have the icon on your chrome toolbar.
 
 ### Updating the extension
 
