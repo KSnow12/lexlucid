@@ -74,7 +74,7 @@ class UsersController < ApplicationController
       if @user.try(:authenticate, params[:password])
         session[:user_id] = @user.id
         cookies.permanent[:email] = @user.email
-        redirect_to documents_path
+        redirect_to return_to_path || documents_path
       else
         flash[:notice] = "Bad username or password"
       end

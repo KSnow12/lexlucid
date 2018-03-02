@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
       return true if logged_in?
 
       flash[:error] = "Must be logged in"
+
+      save_return_to_path
       redirect_to '/login'
     end
 
@@ -35,5 +37,17 @@ class ApplicationController < ActionController::Base
       return true if logged_in? && current_user.admin?
       flash[:error] = "You do not have permission to view that page"
       redirect_to root_path
+    end
+
+    def save_return_to_path
+      self.return_to_path = request.fullpath if request.get?
+    end
+
+    def return_to_path=(val)
+      @return_to_path = session[:return_to_path] = val
+    end
+
+    def return_to_path
+      @return_to_path || session[:return_to_path]
     end
 end
