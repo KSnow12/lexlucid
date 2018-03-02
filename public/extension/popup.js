@@ -3,7 +3,7 @@ $(function () {
   chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
     tab = tabs[0];
 
-    $.get( "https://rqtuodspmy.localtunnel.me/documents/find.json", { document_url: tab.url } )
+    $.get( "http://localhost:3000/documents/find.json", { document_url: tab.url } )
       .done(function( data ) {
         $('.js-content').html(data.html);
 
