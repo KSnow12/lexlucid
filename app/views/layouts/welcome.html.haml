@@ -30,10 +30,10 @@
           .break_large.media_xs_break_small
             %h1.remove_margin_top Grading contracts for the greater&nbsp;good.
 
-          %div{style: 'overflow:hidden;'}
+          .home_header_search{style: 'overflow:hidden;'}
             = form_tag documents_path, method: :get do
-              = text_field_tag :q, params[:q], id: 'home_header_input', placeholder: 'Find a Contract', class: 'media_xs_break_small'
-              = submit_tag "Search", id: 'home_header_submit'
+              = text_field_tag :q, params[:q], id: 'home_header_input', placeholder: 'Find a Contract'
+              = submit_tag "Go", id: 'home_header_submit'
 
     .app_content
       .content_width

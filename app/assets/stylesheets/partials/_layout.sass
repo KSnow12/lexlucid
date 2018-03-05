@@ -24,7 +24,7 @@ body
   padding: 1.5em 0 2em
   background: #fff
   @media screen and (min-width: $app-media-xs)
-    padding: 2em 0 8em
+    padding: 4.9em 0 8em
 
 .app_header
   overflow: hidden
@@ -53,10 +53,10 @@ body
     width: 100%
     padding: 0.8em $app-media-xs-padding
     text-decoration: none
-    border-top: 1px solid rgba(0,0,0,0.1)
+    border-top: 1px solid rgba(255,255,255,0.5)
     border-bottom: none
     &:last-of-type
-      border-bottom: 1px solid rgba(0,0,0,0.1)
+      border-bottom: 1px solid rgba(255,255,255,0.5)
   @media screen and (min-width: $app-media-xs)
     margin: 0
     display: block
@@ -79,19 +79,19 @@ body
 .header_mobile_nav_button
   display: inline-block
   margin-left: 1.8rem
-  padding: 0.1em 0.2em
+  padding: 0.14em
   border: none
   border-radius: $app-border-radius-small
   font-size: 1.3em
   background: $app-black
-  color: $app-yellow
+  color: #fff
   &:hover
     color: $app-yellow
   @media screen and (min-width: $app-media-xs)
     display: none
 
 .home_header
-  padding: 0 0 1em 0
+  padding: 0 0 1.3em 0
   background: $app-yellow
   @media screen and (min-width: $app-media-xs)
     padding: 3em 0 6em 0
@@ -103,6 +103,9 @@ body
   .home_header_indent
     margin-left: 10.6rem
 
+.home_header_search
+  position: relative
+
 #home_header_input, #home_header_submit
   box-sizing: border-box
   padding: 0.5em 0.6em
@@ -112,22 +115,34 @@ body
   border-radius: $app-border-radius-small
   background-color: #fff
   line-height: 1.1
+  font-size: 1.25em
   // &:focus
   //   //background-color: #fff
   //   border-color: $app-blue
 
+#home_header_input
+  padding-right: 3.2em
+
 #home_header_submit
-  padding-left: 1.7em
-  padding-right: 1.7em
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  margin-bottom: 0
+  width: auto
   border: 2px solid $app-black !important
+  border-radius: 0 $app-border-radius-small $app-border-radius-small 0
   background: $app-black
   color: #fff
+  &:after
+    content: 'Go'
   &:hover, &:focus
     background: $app-yellow
     color: $app-black
 
 @media screen and (min-width: $app-media-xs)
   #home_header_input, #home_header_submit
+    padding: 0.5em 0.6em
     font-size: 1.777em
 
   #home_header_input
@@ -137,6 +152,7 @@ body
     border-radius: 7px 0 0 7px
 
   #home_header_submit
+    position: static
     width: auto
     border-radius: 0 7px 7px 0
 
