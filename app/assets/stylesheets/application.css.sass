@@ -68,6 +68,7 @@ $app-border-radius-small: 0.228em //4px
   @media screen and (min-width: $app-media-xs)
     padding: 1.2em 1.5em
     button.close
+      display: block
       float: right
       padding: 0
       border: none
@@ -101,14 +102,8 @@ $app-border-radius-small: 0.228em //4px
 
 @import partials/reset
 // START TEMP
-// @import compass/css3
-@mixin transition($val)
-@mixin box-sizing($val)
 @mixin column-count($val)
 @mixin column-gap($val)
-@mixin border-left-radius($val)
-@mixin border-right-radius($val)
-@mixin border-radius($val)
 // END TEMP
 @import partials/type
 @import partials/layout

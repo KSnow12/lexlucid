@@ -15,7 +15,6 @@ input:not([type="submit"]), textarea, select
   border: 1px solid $app-gray-medium
   border-radius: $app-border-radius-small
   background-color: #fff
-  //@include transition(all 0.4s ease 0s)
   &:focus
     box-shadow: 0 0 0.5em $app-yellow
     border-color: darken($app-yellow,15)
@@ -28,7 +27,6 @@ textarea
 input[type="submit"], button
   //padding: 0.4em
   cursor: pointer
-  @include transition(all 0.4s ease 0s)
 
 input[type='checkbox'], input[type='radio']
   width: auto
@@ -43,8 +41,8 @@ input[type='checkbox'], input[type='radio']
   max-width: 30em
   input[type="text"], input[type="email"]
     padding-right: 7em
-    @include border-left-radius(4px)
-    @include border-right-radius(7px)
+    border-left-radius: 4px
+    border-right-radius: 7px
     max-width: none
   input[type="submit"]
     position: absolute
@@ -55,4 +53,4 @@ input[type='checkbox'], input[type='radio']
     height: auto
     padding-top: 0
     padding-bottom: 0.3em
-    @include border-left-radius(0)
+    border-left-radius: 0
