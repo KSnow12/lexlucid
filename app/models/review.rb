@@ -21,6 +21,13 @@ class Review < ApplicationRecord
     limit(5)
   end
 
+  def self.find_review_for(document, user_email)
+    user = User.find_by_email(user_email)
+    return nil if !document || !user || !document.reviews.any?
+
+    document.reviews.where(user_id: user.id).first
+  end
+
   private
 
   # validates

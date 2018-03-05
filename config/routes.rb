@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :document_types, except: [:show]
   resources :documents, shallow: true do
     resources :reviews, except: [:show, :index]
+    get :find, on: :collection
   end
   resources :users
 
