@@ -1,12 +1,12 @@
 - if params[:q].present?
-  = link_to documents_path, class: 'btn float_right' do
+  = link_to documents_path, class: 'btn btn_gray float_right' do
     %span.fa.fa-fw.fa-times
     Clear Search
 
-  %h2 Results for: '#{params[:q]}'
+  %h2.remove_margin_top Results for: '#{params[:q]}'
 
 - else
-  %h2 Recently Reviewed Contracts
+  %h2.remove_margin_top Recently Reviewed Contracts
 
 %table.table_index
   %thead
@@ -15,7 +15,7 @@
       %th Company
       %th Version / Updated
       %th.text_right Reviews
-      %th{style: "width: 120px;"} Score
+      %th Grade
       - if logged_in?
         %th
 
@@ -27,7 +27,7 @@
         %td{data: {'col-header': 'Company:'}}= document.company_name
         %td{data: {'col-header': 'Version:'}}= document.version
         %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
-        %td.cell_collapse{data: {'col-header': 'Rating:'}}
+        %td.cell_collapse{data: {'col-header': 'Grade:'}}
           - if document.reviews.any?
             %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
 

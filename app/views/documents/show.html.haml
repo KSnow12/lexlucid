@@ -48,11 +48,12 @@
         %thead
           %tr
             %th Attorney
-            %th.text_right Score
+            %th Grade
             %th Explanation
         %tbody
           - rating.bullet_point.ratings.for_document(@document).preload(:review => :user).each do |lawyer_rating|
             %tr
               %td.cell_collapse{data: {'col-header': 'Attorney:'}}= link_to "#{lawyer_rating.review.user.first_name} #{lawyer_rating.review.user.last_name[0]}", lawyer_rating.review.user
-              %td.cell_collapse.text_right{data: {'col-header': 'Rating:'}}= lawyer_rating.score
+              %td.cell_collapse{data: {'col-header': 'Grade:'}}
+                %span.js-star-readonly-score{data: {size: 'small', score:  lawyer_rating.score}, title: lawyer_rating.score}
               %td{data: {'col-header': 'Desc:'}}= simple_format lawyer_rating.description
