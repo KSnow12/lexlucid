@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "LexLucid for Users",
-  "description": "Display Contract/Agreement Ratings",
+  "name": "LexLucid",
+  "description": "Grading contracts for the greater good.",
   "version": "1.0",
   "homepage_url": "https://lexlucid.com",
 
