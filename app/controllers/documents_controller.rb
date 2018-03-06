@@ -73,7 +73,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/find.json?document_url=url
   def find
-    @document = Document.find_by_url(params[:document_url])
+    @document = Document.search_for_url(params[:document_url])
     @review = Review.find_review_for(@document, cookies[:email])
   end
 

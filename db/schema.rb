@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225181133) do
+ActiveRecord::Schema.define(version: 20180306192351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 20180225181133) do
     t.bigint "document_type_id"
     t.string "version"
     t.text "company_name"
+    t.text "uri_host"
+    t.text "uri_path"
+    t.text "uri_query"
+    t.text "uri_fragment"
     t.index ["document_type_id"], name: "index_documents_on_document_type_id"
   end
 
