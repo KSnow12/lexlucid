@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
 
   "name": "LexLucid",
   "description": "Grading contracts for the greater good.",
