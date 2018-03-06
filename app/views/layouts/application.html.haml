@@ -31,8 +31,18 @@
 
         = yield
 
-    %footer.footer
+    %footer.footer.text_light
       .content_width
+        %p
+          = link_to 'https://twitter.com/LexLucid', class: 'remove_border_bottom' do
+            %span.fa.fa-fw.fa-2x.fa-twitter-square
+
+          = link_to 'https://www.facebook.com/teamlexlucid', class: 'remove_border_bottom' do
+            %span.fa.fa-fw.fa-2x.fa-facebook-square
+
+          = link_to 'https://www.instagram.com/teamlexlucid/', class: 'remove_border_bottom' do
+            %span.fa.fa-fw.fa-2x.fa-instagram
+
         .cols
           .col_50
             %p
