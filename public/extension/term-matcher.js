@@ -12,27 +12,30 @@ chrome.runtime.onInstalled.addListener(function() {
         // That fires when a page's URL contains a 'g' ...
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'term' },
+            pageUrl: { pathContains: 'term' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'policy' },
+            pageUrl: { pathContains: 'policy' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'tos' },
+            pageUrl: { pathContains: 'tos' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'agreement' },
+            pageUrl: { pathContains: 'agreement' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'rules' },
+            pageUrl: { pathContains: 'rules' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'contract' },
+            pageUrl: { pathContains: 'contract' },
+          }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { pathContains: 'privacy' },
           }),
           //just to match Global Legal Hackathon Rules page
           //the matcher is case sensitive
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'Rules'},
+            pageUrl: { pathContains: 'Rules'},
           }),
         ],
         // And shows the extension's page action.

@@ -1,9 +1,9 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "LexLucid",
   "description": "Grading contracts for the greater good.",
-  "version": "1.0",
+  "version": "1.1",
   "homepage_url": "https://lexlucid.com",
 
   "background": {
