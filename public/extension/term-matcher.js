@@ -28,7 +28,12 @@ chrome.runtime.onInstalled.addListener(function() {
           }),
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { urlContains: 'contract' },
-          })
+          }),
+          //just to match Global Legal Hackathon Rules page
+          //the matcher is case sensitive
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { urlContains: 'Rules'},
+          }),
         ],
         // And shows the extension's page action.
         actions: [ new chrome.declarativeContent.ShowPageAction() ]
