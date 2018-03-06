@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :documents, shallow: true do
     resources :reviews, except: [:show, :index]
     get :find, on: :collection
+    get :score, on: :collection
   end
   resources :users
 

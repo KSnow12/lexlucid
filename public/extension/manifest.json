@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "LexLucid",
   "description": "Grading contracts for the greater good.",
@@ -7,15 +7,28 @@
   "homepage_url": "https://lexlucid.com",
 
   "background": {
-    "scripts": ["term-matcher.js"],
+    "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*policy*",
+        "*://*/*Rules*",
+        "*://*/*term*",
+        "*://*/*tos*",
+        "*://*/*agreement*",
+        "*://*/*rules*",
+        "*://*/*contract*"],
+      "css": ["facebox.css", "star-rating-svg.css"],
+      "js": ["jquery-3.3.1.min.js", "facebox.js", "star-rating-svg.js", "content.js"]
+    }
+  ],
   "page_action":{
     "default_icon": "icon.png",
     "default_title": "Grade this Contract",
     "default_popup": "popup.html"
   },
   "permissions": [
-   "declarativeContent", "tabs", "https://lexlucid.com/"
+   "declarativeContent", "tabs", "notifications", "https://lexlucid.com/"
    ]
 }

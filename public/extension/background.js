@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(function() {
     // With a new rule ...
     chrome.declarativeContent.onPageChanged.addRules([
       {
-        // That fires when a page's URL contains a 'g' ...
+        // That fires when a page's URL contains a keyword for a contract page
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { urlContains: 'term' },
@@ -24,7 +24,7 @@ chrome.runtime.onInstalled.addListener(function() {
             pageUrl: { urlContains: 'agreement' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'rules' },
+            pageUrl: { urlContains: 'rules'},
           }),
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { urlContains: 'contract' },

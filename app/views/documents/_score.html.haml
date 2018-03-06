@@ -1,0 +1,11 @@
+.js-lexlucid-logo LEXLUCID.com
+- if document
+  %h1= document.name
+  %p
+    %table.text_small
+      %tr
+        %td Score:
+        %td
+          .js-star-readonly-score{data: {score:  document.overall_score}}
+- else
+  %p Document Available For Create

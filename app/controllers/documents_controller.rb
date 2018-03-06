@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :show, :find]
+  skip_before_action :require_login, only: [:index, :show, :find, :score]
 
   def index
     @documents = Document.search(params[:q])
@@ -75,6 +75,11 @@ class DocumentsController < ApplicationController
   def find
     @document = Document.find_by_url(params[:document_url])
     @review = Review.find_review_for(@document, cookies[:email])
+  end
+
+  # GET /documents/score.json?document_url=url
+  def score
+    @document = Document.find_by_url(params[:document_url])
   end
 
   private
