@@ -45,7 +45,9 @@ class Document < ApplicationRecord
 
   # before_validation
   def record_parsed_uri
-    self.url = if url.to_s =~ %r{https?://} || url.blank?
+    return if url.blank?
+
+    self.url = if url.to_s =~ %r{https?://}
       url
     else
       "http://#{url}"
@@ -67,7 +69,7 @@ class Document < ApplicationRecord
   end
 
   def valid_unique_url
-    if uri_host.blank?
+    if uri_host.blank? || url.blank?
       errors.add(:url, "appears to be invalid")
       return false
     end
