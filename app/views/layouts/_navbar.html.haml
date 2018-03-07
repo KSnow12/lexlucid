@@ -1,5 +1,7 @@
 - if !logged_in? && !has_logged_in?
-  = link_to 'Attorney?', new_user_path
+  = link_to 'Attorney Registration', new_user_path
+- if has_logged_in? && !logged_in?
+  = link_to 'Attorney Login', '/login'
 - if logged_in?
   - if current_user.admin?
     = link_to 'Document Types', document_types_path
@@ -8,5 +10,3 @@
 
   = link_to "Add Contract", new_document_path
   = link_to 'Dashboard', current_user
-- if has_logged_in? && !logged_in?
-  = link_to 'Attorney?', '/login'
