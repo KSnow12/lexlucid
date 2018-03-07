@@ -72,9 +72,12 @@ body
       color: $app-font-color
       &:last-of-type
         border: none
-      &:hover, &:focus, &.active
+      &:hover, &:focus
         background: $app-black
         color: #fff
+      &.active
+        background: rgba(0,0,0,0.13)
+        color: $app-black
 
 .header_mobile_nav_button
   display: inline-block
