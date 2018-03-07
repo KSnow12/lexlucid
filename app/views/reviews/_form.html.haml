@@ -1,5 +1,12 @@
 = render partial: "shared/error_messages", locals: { object: @review }
 
+%table.table_padded
+  %tr.form-group
+    %td.cell_collapse
+      = f.check_box :attorney_not_affiliated
+    %td.col-sm-10
+      = f.label :attorney_not_affiliated, "I am not affiliated with this company that I'm reviewing (GET BETTER WORDING HERE)"
+
 = f.fields_for :ratings do |rating_form|
   %hr
 

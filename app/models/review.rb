@@ -6,6 +6,9 @@ class Review < ApplicationRecord
   accepts_nested_attributes_for :ratings, reject_if: ->(attributes) {attributes[:bullet_point_id].blank? && attributes[:bullet_point_id].blank? && attributes[:description].blank?}
 
   validate :minimum_one_rating
+  validate :require_attorney_affiliated_checkbox
+
+  attr_accessor :attorney_not_affiliated
 
   def self.summarize_scores(document)
     Rating.joins(:review).
@@ -34,6 +37,13 @@ class Review < ApplicationRecord
   def minimum_one_rating
     if ratings.size <= 0
       errors.add(:ratings, "- You must grade at least one issue to submit a review")
+    end
+  end
+
+  # validates
+  def require_attorney_affiliated_checkbox
+    if !ActiveModel::Type::Boolean.new.cast(attorney_not_affiliated)
+      errors.add(:attorney_not_affiliated, "is required")
     end
   end
 end

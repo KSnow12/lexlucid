@@ -103,7 +103,7 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(
         :lawyer_id,
-        :body,
+        :attorney_not_affiliated,
         ratings_attributes: [
           :id,
           :score,
