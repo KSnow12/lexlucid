@@ -2,6 +2,14 @@
   = render partial: "shared/error_messages", locals: { object: @user }
 
   %table.table_padded
+    - if !logged_in?
+      %tr
+        %td
+        %td
+          %em
+            Already have an account?
+            = link_to 'Login Now', '/login'
+
     %tr
       %td.cell_collapse= f.label :first_name, class: 'text_capitalize'
       %td= f.text_field :first_name
@@ -23,8 +31,11 @@
       %td= f.text_field :company_name
 
     %tr
-      %td= f.label :states, "In what states are you licensed to practice law?"
-      %td= f.text_field :states, required: true
+      %td= f.label :states, "States You Are Licensed"
+      %td
+        = f.text_field :states, required: true
+        .text_small
+          %em List every state where you are licensed to practice law
 
     %tr
       %td.cell_collapse= f.label :attorney_registration_number, class: 'text_capitalize'
