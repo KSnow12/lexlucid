@@ -46,6 +46,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to @document, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
+        build_review_children
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
@@ -60,6 +61,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to user_path(@review.user_id), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
+        build_review_children
         format.html {
           @document = @review.document
           build_review_children
