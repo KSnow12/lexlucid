@@ -20,7 +20,7 @@ $(function () {
         //Update the New Document Button if any
         if( $('.js-new-document').length > 0 ){
           href = $('.js-new-document').attr('href')
-          href = href + "?name=" + tab.title + "&url=" + tab.url
+          href = href + "?name=" + encodeURI(tab.title) + "&url=" + encodeURI(tab.url)
           $('.js-new-document').attr('href', href)
         }
       });
