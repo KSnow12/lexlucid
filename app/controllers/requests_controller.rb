@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :require_admin, only: [:destroy]
 
   def index
-    @requests = Request.uncompleted.order('completed_at DESC')
+    @requests = Request.order('completed_at DESC').uncompleted
   end
 
   def new
