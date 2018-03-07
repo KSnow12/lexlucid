@@ -1,47 +1,42 @@
+.break_small
+  = link_to root_url, target: '_blank', class: 'remove_border_bottom' do
+    %img.header_logo{src: 'lexlucid-logo-vector.svg'}
+
 - if document
   %h1= document.name
-  %h3= document.company_name
 
   - if document.reviews.any?
-    %p #{pluralize(document.reviews.count, "attorney")} #{"has".pluralize(document.reviews.count)} graded this contract on LexLucid.
-    %p
-      %table.text_small
+    .overall_stars.js-star-readonly-score{data: {score:  document.overall_score}}
+
+    .break_medium
+      .text_small #{@document.overall_score} Stars &nbsp; | &nbsp; #{document.reviews.count} Attorney #{"Review".pluralize(@document.reviews.count)}
+
+    %table.text_small.break_small
+      - if document.version
         %tr
-          %td Grade:
-          %td
-            .js-star-readonly-score{data: {score:  document.overall_score}}
-        - if document.version
-          %tr
-            %td Version:
-            %td= document.version
+          %td Version
+          %td= document.version
 
-    %hr
-
-    %table.text_small
-      %tr
-        %th Issue
-        %th Grade
       - document.summarize_scores.each do |rating|
         %tr
-          %td= rating.bullet_point.human_title
-          %td.js-star-readonly-score{data: {score: rating.avg_score}}
+          %td #{rating.bullet_point.human_title}
+          %td.cell_collapse{style: 'vertical-align:top;'}
+            %span.js-star-readonly-score{data: {score: rating.avg_score}}
 
-  %p
-    - if has_logged_in?
-      - if review
-        = link_to "Edit Your Review", edit_review_url(review), target: "_blank", class: "btn"
-      - else
-        = link_to "Review this Contract", new_document_review_url(document), target: "_blank", class: "btn"
+  - if has_logged_in?
+    - if review
+      = link_to "Edit Your Review", edit_review_url(review), target: "_blank", class: "btn"
     - else
-      = link_to "More Details on LexLucid", document_url(document), target: "_blank", class: "btn"
+      = link_to "Review Contract", new_document_review_url(document), target: "_blank", class: "btn"
+  - else
+    = link_to "View Details", document_url(document), target: "_blank", class: "btn"
 
 - else
-  %h1 Contract not Found
+  %h1 No Reviews Found
 
-  %p This contract needs to be graded
+  %p This contract has not been reviewed yet.
 
-  %p
-    - if has_logged_in?
-      = link_to "Add Contract", new_document_url, target: "_blank", class: "btn js-new-document"
-    - else
-      = link_to "Visit LexLucid", root_url, target: "_blank", class: "btn"
+  - if has_logged_in?
+    = link_to "Add Contract", new_document_url, target: "_blank", class: "btn js-new-document"
+  - else
+    = link_to "Request Attorney Review", root_url, target: "_blank", class: "btn"
