@@ -1,13 +1,12 @@
 class RequestsController < ApplicationController
-  skip_before_action :require_login, only: [:new]
-  before_action :require_admin, only: [:index]
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
     @requests = Request.uncompleted.order('completed_at DESC')
   end
 
   def new
-    @request = Request.new(title: params[:title], url: params[:url])
+    @request = Request.new(title: params[:name], url: params[:url])
   end
 
   def create

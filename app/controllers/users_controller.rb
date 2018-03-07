@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @requests = Request.uncompleted.order('completed_at DESC')
   end
 
   # GET /users/new
