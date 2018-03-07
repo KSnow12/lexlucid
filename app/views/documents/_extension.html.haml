@@ -1,6 +1,6 @@
 .break_small
   = link_to root_url, target: '_blank', class: 'remove_border_bottom' do
-    %img.header_logo{src: 'lexlucid-logo-vector.svg'}
+    %img.header_logo{src: asset_url('lexlucid-logo-vector.svg')}
 
 - if document
   %h1= document.name
