@@ -19,12 +19,8 @@
       %td= f.password_field :password, required: f.object.new_record?
 
     %tr
-      %td.cell_collapse= f.label :company_name, 'Company'
+      %td.cell_collapse= f.label :company_name, 'Employer'
       %td= f.text_field :company_name
-
-    %tr
-      %td.cell_collapse= f.label :website
-      %td= f.text_field :website
 
     %tr
       %td= f.label :states, "In what states are you licensed to practice law?"
@@ -33,10 +29,6 @@
     %tr
       %td.cell_collapse= f.label :attorney_registration_number, class: 'text_capitalize'
       %td= f.text_field :attorney_registration_number, required: true
-
-    %tr
-      %td.cell_collapse= f.label :description
-      %td= f.text_area :description
 
     %tr
       %td
