@@ -4,7 +4,6 @@
       %tr
         %th Title
         %th Url
-        %th Description
         %th
 
     %tbody
@@ -12,10 +11,9 @@
         %tr
           %td{data: {'col-header': 'Title:'}}= request.title
           %td{data: {'col-header': 'Url:'}}= link_to request.url, request.url
-          %td{data: {'col-header': 'Description:'}}= request.description
           %td.cell_collapse
             %ul.inline_list
-              %li= link_to 'Add Contract', new_document_path(name: request.title, url: request.url)
+              %li= link_to 'Add Contract', new_document_path(name: request.title, url: request.url, request_id: request.id)
 - else
   %p
     %em No recent requests

@@ -1,7 +1,9 @@
 class Document < ApplicationRecord
   belongs_to :document_type
+  belongs_to :request
   has_many :reviews, dependent: :destroy
   before_validation :record_parsed_uri, if: :will_save_change_to_url? # url_changed?
+  before_create :complete_request
   validate :valid_unique_url
 
   def self.search(query)
@@ -84,6 +86,12 @@ class Document < ApplicationRecord
 
     if docs.present?
       errors.add(:url, "must be unique")
+    end
+  end
+
+  def complete_request
+    if self.request_id
+      self.request.complete
     end
   end
 end

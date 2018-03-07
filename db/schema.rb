@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307202856) do
+ActiveRecord::Schema.define(version: 20180307215339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180307202856) do
     t.text "uri_fragment"
     t.boolean "auto_accept"
     t.boolean "notify_on_changes"
+    t.integer "request_id"
     t.index ["document_type_id"], name: "index_documents_on_document_type_id"
   end
 
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(version: 20180307202856) do
   create_table "requests", force: :cascade do |t|
     t.text "title"
     t.text "url"
-    t.text "description"
     t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
