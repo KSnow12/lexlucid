@@ -16,8 +16,8 @@
   &nbsp;&nbsp;
 
   %ul.inline_list.text_small.break_medium{style: 'vertical-align:top;'}
-    %li #{number_with_precision(@document.overall_score, precision: 1)} stars
-    %li #{@document.reviews.count} attorney #{"review".pluralize(@document.reviews.count)}
+    %li #{number_with_precision(@document.overall_score, precision: 1)} Stars
+    %li #{@document.reviews.count} Attorney #{"Review".pluralize(@document.reviews.count)}
 
 %table.table_padded_right.text_small.break_large
   %tr
