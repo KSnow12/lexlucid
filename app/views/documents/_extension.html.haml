@@ -9,7 +9,7 @@
     .overall_stars.js-star-readonly-score{data: {score:  document.overall_score}}
 
     .break_medium
-      .text_small #{@document.overall_score} Stars &nbsp; | &nbsp; #{document.reviews.count} Attorney #{"Review".pluralize(@document.reviews.count)}
+      .text_small #{number_with_precision(@document.overall_score, precision: 1)} Stars &nbsp; | &nbsp; #{document.reviews.count} Attorney #{"Review".pluralize(@document.reviews.count)}
 
     %table.text_small.break_small
       - if document.version
