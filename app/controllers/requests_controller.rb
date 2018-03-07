@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
 
-    if request.save
+    if @request.save
       redirect_to documents_path, notice: "Your request has been sent. Thank You!"
     else
       render :new

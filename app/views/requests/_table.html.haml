@@ -8,7 +8,7 @@
         %th
 
     %tbody
-      - requests.each do |req|
+      - requests.each do |request|
         %tr
           %td{data: {'col-header': 'Title:'}}= request.title
           %td{data: {'col-header': 'Url:'}}= link_to request.url, request.url
