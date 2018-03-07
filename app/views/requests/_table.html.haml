@@ -1,9 +1,13 @@
+- include_completed_at ||= false
+
 - if requests.any?
   %table.table_index
     %thead
       %tr
         %th Title
         %th Url
+        - if include_completed_at
+          %th Completed At
         %th
 
     %tbody
@@ -11,9 +15,12 @@
         %tr
           %td{data: {'col-header': 'Title:'}}= request.title
           %td{data: {'col-header': 'Url:'}}= link_to request.url, request.url
+          - if include_completed_at
+            %td{data: {'col-header': 'Completed At:'}}= request.nice_completed_at
           %td.cell_collapse
             %ul.inline_list
-              %li= link_to 'Add Contract', new_document_path(name: request.title, url: request.url, request_id: request.id)
+              - unless request.completed_at
+                %li= link_to 'Add Contract', new_document_path(name: request.title, url: request.url, request_id: request.id)
               - if current_user.admin?
                 %li= link_to 'Delete', request, data: { confirm: 'Are you sure?' }, method: :delete
 - else

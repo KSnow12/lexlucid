@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-  before_action :require_admin, only: [:destroy]
+  before_action :require_admin, only: [:destroy, :index]
 
   def index
-    @requests = Request.order('completed_at DESC').uncompleted
+    @requests = Request.order('completed_at DESC')
   end
 
   def new

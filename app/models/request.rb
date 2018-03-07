@@ -6,4 +6,9 @@ class Request < ApplicationRecord
     self.completed_at = Date.current
     save
   end
+
+  def nice_completed_at
+    return if completed_at.blank?
+    completed_at.strftime("%b %-d, %Y %r")
+  end
 end
