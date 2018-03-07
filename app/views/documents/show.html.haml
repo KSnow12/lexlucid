@@ -8,7 +8,16 @@
       %span.fa.fa-fw.fa-plus
       Add Review
 
-%h1= @document.name
+%h1{style: 'margin-bottom:0.2em'}= @document.name
+
+- if @document.reviews.any?
+  %span.js-star-readonly-score{data: {size: 'small', score:  @document.overall_score}, title: @document.overall_score}
+
+  &nbsp;&nbsp;
+
+  %ul.inline_list.text_small.break_medium{style: 'vertical-align:top;'}
+    %li #{@document.overall_score} stars
+    %li #{@document.reviews.count} attorney reviews
 
 %table.table_padded_right.text_small.break_large
   %tr
