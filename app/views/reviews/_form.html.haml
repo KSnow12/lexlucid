@@ -1,11 +1,12 @@
 = render partial: "shared/error_messages", locals: { object: @review }
 
-%table.table_padded
-  %tr.form-group
-    %td.cell_collapse
-      = f.check_box :attorney_not_affiliated
-    %td.col-sm-10
-      = f.label :attorney_not_affiliated, "Check this box to confirm that there are no circumstances specific to this company that might preclude you from giving a fair and impartial review of this contract."
+.box_gray
+  .fa.fa-3x.fa-exclamation-triangle.float_left.text_light
+
+  %div{style: 'max-width:55em;'}
+    = f.check_box :attorney_not_affiliated
+
+    = f.label :attorney_not_affiliated, "Check this box to confirm that there are no circumstances specific to this company that might preclude you from giving a fair and impartial review of this contract."
 
 = f.fields_for :ratings do |rating_form|
   %hr

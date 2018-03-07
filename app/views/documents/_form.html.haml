@@ -23,12 +23,14 @@
       %td= f.text_field :version, placeholder: 'Version Number or Last Updated Date'
 
     %tr
-      %td{colspan: '2'}
+      %td
+      %td
         = f.check_box :auto_accept
         = f.label :auto_accept, "Does the contract attempt to bind users without affirmative acceptance?"
 
     %tr
-      %td{colspan: '2'}
+      %td
+      %td
         = f.check_box :notify_on_changes
         = f.label :notify_on_changes, "Does the company commit to notifying users any time changes are made to the terms of the contract?"
 
@@ -36,6 +38,7 @@
     %tr
       %td
       %td
+        .break_small
         = f.submit class: 'btn'
 
         = link_to @document.new_record? ? documents_path : @document, class: 'btn btn_gray' do
