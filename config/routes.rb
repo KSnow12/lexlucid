@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get :find, on: :collection
   end
   resources :users
+  resources :requests, only: [:new, :index]
 
   get '/login', to: 'users#login'
   post '/login', to: 'users#login'
