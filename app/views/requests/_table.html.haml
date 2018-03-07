@@ -21,8 +21,8 @@
             %ul.inline_list
               - unless request.completed_at
                 %li= link_to 'Add Contract', new_document_path(name: request.title, url: request.url, request_id: request.id)
-              - if current_user.admin?
-                %li= link_to 'Delete', request, data: { confirm: 'Are you sure?' }, method: :delete
+                - if current_user.admin?
+                  %li= link_to 'Delete', request, data: { confirm: 'Are you sure?' }, method: :delete
 - else
   %p
     %em No recent requests
