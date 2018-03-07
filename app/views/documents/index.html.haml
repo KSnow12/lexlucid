@@ -22,16 +22,17 @@
   %tbody
     - i = 0
     - @documents.each do |document|
-      %tr
-        %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
-        %td{data: {'col-header': 'Company:'}}= document.company_name
-        %td{data: {'col-header': 'Version:'}}= document.version
-        %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
-        %td.cell_collapse{data: {'col-header': 'Grade:'}}
-          - if document.reviews.any?
-            %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
+      - if logged_in? || document.reviews.any?
+        %tr
+          %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
+          %td{data: {'col-header': 'Company:'}}= document.company_name
+          %td{data: {'col-header': 'Version:'}}= document.version
+          %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
+          %td.cell_collapse{data: {'col-header': 'Grade:'}}
+            - if document.reviews.any?
+              %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
 
-        - if logged_in?
-          %td.cell_collapse
-            - if !current_user.has_reviewed_document?(document)
-              = link_to 'Add Review', new_document_review_path( document)
+          - if logged_in?
+            %td.cell_collapse
+              - if !current_user.has_reviewed_document?(document)
+                = link_to 'Add Review', new_document_review_path( document)

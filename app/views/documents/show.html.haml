@@ -17,7 +17,7 @@
 
   %ul.inline_list.text_small.break_medium{style: 'vertical-align:top;'}
     %li #{@document.overall_score} stars
-    %li #{@document.reviews.count} attorney reviews
+    %li #{@document.reviews.count} attorney #{"review".pluralize(@document.reviews.count)}
 
 %table.table_padded_right.text_small.break_large
   %tr
@@ -47,7 +47,7 @@
     .break_small
       %span.js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
 
-      %span.text_small{style: 'vertical-align:top;'} &nbsp; #{rating.reviews_done} Reviews
+      %span.text_small{style: 'vertical-align:top;'} &nbsp; #{pluralize(rating.reviews_done, "Review")}
 
     %div{class: "js-review-bullet-#{rating.bullet_point_id}"}
       %table.table_index

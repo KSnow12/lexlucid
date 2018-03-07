@@ -3,7 +3,7 @@
   %h3= document.company_name
 
   - if document.reviews.any?
-    %p= "#{document.reviews.count} attorneys have graded this contract on LexLucid."
+    %p #{pluralize(document.reviews.count, "attorney")} #{"has".pluralize(document.reviews.count)} graded this contract on LexLucid.
     %p
       %table.text_small
         %tr
