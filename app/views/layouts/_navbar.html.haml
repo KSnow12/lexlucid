@@ -1,12 +1,12 @@
 - if !logged_in? && !has_logged_in?
-  = link_to 'Attorney Registration', new_user_path
+  = link_to 'Attorney Registration', new_user_path, class: active_page?("users") ? 'active' : ''
 - if has_logged_in? && !logged_in?
-  = link_to 'Attorney Login', '/login'
+  = link_to 'Attorney Login', '/login', class: active_page?("users") ? 'active' : ''
 - if logged_in?
   - if current_user.admin?
-    = link_to 'Document Types', document_types_path
-    = link_to 'Issues', bullet_points_path
-    = link_to 'Users', users_path
+    = link_to 'Document Types', document_types_path, class: active_page?("document_types") ? 'active' : ''
+    = link_to 'Issues', bullet_points_path, class: active_page?("bullet_points") ? 'active' : ''
+    = link_to 'Users', users_path, class: active_page?("users#index") ? 'active' : ''
 
-  = link_to "Add Contract", new_document_path
-  = link_to 'Dashboard', current_user
+  = link_to "Add Contract", new_document_path, class: active_page?("documents#new", "documents#create") ? 'active' : ''
+  = link_to 'Dashboard', current_user, class: active_page?("users#show") && current_user.id == @user.id ? 'active' : ''
