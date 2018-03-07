@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :require_admin, only: [:destroy]
 
   def index
     @requests = Request.uncompleted.order('completed_at DESC')
@@ -16,6 +17,14 @@ class RequestsController < ApplicationController
       redirect_to documents_path, notice: "Your request has been sent. Thank You!"
     else
       render :new
+    end
+  end
+
+  def destroy
+    @request = Request.find(params[:id])
+
+    if @request.destroy
+      redirect_to documents_path, notice: "Request for contract was deleted."
     end
   end
 
