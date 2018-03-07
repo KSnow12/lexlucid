@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -eu
+
+echo '===> Changes to deploy:'
+git fetch heroku master --quiet
+git log --pretty=format:"%h %an: %s" --abbrev-commit  heroku/master..master
+echo
+
+echo '===> Checking Heroku Status...'
+heroku status
+echo
+echo 'Enter to continue deploy, ctrl-c to stop.'
+read -r
+
+echo '===> Deploying to production...'
+git push heroku master
+
+echo '===> Checking for pending migrations...'
+pending_migrations=$(heroku run rake db:migrate:status -r heroku | awk '{print $1}' | grep 'down')
+if [ "$pending_migrations" ]; then
+   echo "===> Running Migrations..."
+   heroku run rake db:migrate -r heroku
+
+   echo "===> Restarting app..."
+   heroku restart -r heroku
+fi

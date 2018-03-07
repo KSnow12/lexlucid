@@ -1,5 +1,8 @@
 # lexlucid
 
+## How to Deploy
+`script/deploy`
+
 ## Setting The Chrome Extension Locally for the First Time:
 
 1. Update your local repository to get the latest changes.
