@@ -32,10 +32,30 @@ chrome.runtime.onInstalled.addListener(function() {
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { pathContains: 'privacy' },
           }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { pathContains: 'legal' },
+          }),
           //just to match Global Legal Hackathon Rules page
           //the matcher is case sensitive
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { pathContains: 'Rules'},
+          }),
+          //just to match Walmart tos page
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { pathContains: 'answers'},
+          }),
+          //just to match Bitrex tos page
+          //the matcher is case sensitive
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { pathContains: 'Term'},
+          }),
+          //just to match Amazon tos page
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostContains: 'amazon', pathContains: 'help'},
+          }),
+          //just to match Instagram tos page
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostContains: 'help.instagram'},
           }),
         ],
         // And shows the extension's page action.
