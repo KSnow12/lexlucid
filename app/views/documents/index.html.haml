@@ -30,7 +30,7 @@
           %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
           %td.cell_collapse{data: {'col-header': 'Grade:'}}
             - if document.reviews.any?
-              %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: document.overall_score}
+              %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: number_with_precision(document.overall_score, precision: 1)}
 
           - if logged_in?
             %td.cell_collapse
