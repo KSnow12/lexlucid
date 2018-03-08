@@ -39,13 +39,17 @@
         .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
   %tr
     %td{colspan: '2'} &nbsp;
-
-  - if @document.auto_accept?
-    %tr
+  %tr
+    - if @document.auto_accept?
       %td.text_right.media_xs_text_right
         %span.fa.fa-fw.fa-lg.fa-exclamation-circle.text_red
       %td
         This contract attempts to bind users without affirmative acceptance.
+    - else
+      %td.text_right.media_xs_text_right
+        %span.fa.fa-fw.fa-lg.fa-check-square-o.text_green
+      %td
+        This contract does NOT bind users without affirmative acceptance.
   %tr
     - if @document.notify_on_changes?
       %td.text_right.media_xs_text_right
@@ -54,7 +58,7 @@
 
     - else
       %td.text_right.media_xs_text_right
-        %span.fa.fa-lg.fa-exclamation-circle.text_red
+        %span.fa.fa-fw.fa-lg.fa-exclamation-circle.text_red
       %td The company has NOT committed to notifying users any time changes are made to the terms of the contract.
 
 - @summarized_ratings.each do |rating|
