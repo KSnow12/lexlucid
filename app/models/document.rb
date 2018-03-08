@@ -1,6 +1,6 @@
 class Document < ApplicationRecord
   belongs_to :document_type
-  belongs_to :request
+  belongs_to :request, optional: true
   has_many :reviews, dependent: :destroy
   before_validation :record_parsed_uri, if: :will_save_change_to_url? # url_changed?
   before_create :complete_request
