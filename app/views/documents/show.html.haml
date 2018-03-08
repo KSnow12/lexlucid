@@ -37,6 +37,25 @@
       %td.cell_collapse.text_right.media_xs_text_right.text_bold= link_to rating.bullet_point.human_title, "#issue-#{rating.bullet_point_id}"
       %td
         .js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
+  %tr
+    %td{colspan: '2'} &nbsp;
+
+  - if @document.auto_accept?
+    %tr
+      %td.text_right.media_xs_text_right
+        %span.fa.fa-fw.fa-lg.fa-exclamation-circle.text_red
+      %td
+        This contract attempts to bind users without affirmative acceptance.
+  %tr
+    - if @document.notify_on_changes?
+      %td.text_right.media_xs_text_right
+        %span.fa.fa-fw.fa-lg.fa-check-square-o.text_green
+      %td The company has committed to notifying users any time changes are made to the terms of the contract.
+
+    - else
+      %td.text_right.media_xs_text_right
+        %span.fa.fa-lg.fa-exclamation-circle.text_red
+      %td The company has NOT committed to notifying users any time changes are made to the terms of the contract.
 
 - @summarized_ratings.each do |rating|
   .box.media_xs_bleed.break_medium{id: "issue-#{rating.bullet_point_id}"}
