@@ -44,12 +44,12 @@
       %td.text_right.media_xs_text_right
         %span.fa.fa-fw.fa-lg.fa-exclamation-circle.text_red
       %td
-        This contract attempts to bind users without affirmative acceptance.
+        Warning: You may be bound by the terms of this contract simply by accessing the company&rsquo;s website.
     - else
       %td.text_right.media_xs_text_right
         %span.fa.fa-fw.fa-lg.fa-check-square-o.text_green
       %td
-        This contract does NOT bind users without affirmative acceptance.
+        You are NOT bound by the terms of this contract simply by accessing the company&rsquo;s website.
   %tr
     - if @document.notify_on_changes?
       %td.text_right.media_xs_text_right
@@ -59,7 +59,7 @@
     - else
       %td.text_right.media_xs_text_right
         %span.fa.fa-fw.fa-lg.fa-exclamation-circle.text_red
-      %td The company has NOT committed to notifying users any time changes are made to the terms of the contract.
+      %td Warning: The company has NOT committed to notifying users any time changes are made to the terms of the contract.
 
 - @summarized_ratings.each do |rating|
   .box.media_xs_bleed.break_medium{id: "issue-#{rating.bullet_point_id}"}
