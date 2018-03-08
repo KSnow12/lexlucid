@@ -8,31 +8,44 @@
 - else
   %h2.remove_margin_top Recently Reviewed Contracts
 
-%table.table_index
-  %thead
-    %tr
-      %th Contract / Agreement
-      %th Company
-      %th Version / Updated
-      %th.text_right Reviews
-      %th Grade
-      - if logged_in?
-        %th
+- if @documents.any?
+  %table.table_index
+    %thead
+      %tr
+        %th Contract / Agreement
+        %th Company
+        %th Version / Updated
+        %th.text_right Reviews
+        %th Grade
+        - if logged_in?
+          %th
 
-  %tbody
-    - i = 0
-    - @documents.each do |document|
-      - if logged_in? || document.reviews.any?
-        %tr
-          %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
-          %td{data: {'col-header': 'Company:'}}= document.company_name
-          %td{data: {'col-header': 'Version:'}}= document.version
-          %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
-          %td.cell_collapse{data: {'col-header': 'Grade:'}}
-            - if document.reviews.any?
-              %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: number_with_precision(document.overall_score, precision: 1)}
+    %tbody
+      - i = 0
+      - @documents.each do |document|
+        - if logged_in? || document.reviews.any?
+          %tr
+            %td{data: {'col-header': 'Contract:'}}= link_to document.name, document
+            %td{data: {'col-header': 'Company:'}}= document.company_name
+            %td{data: {'col-header': 'Version:'}}= document.version
+            %td.text_right{data: {'col-header': 'Reviews:'}}= document.reviews.count
+            %td.cell_collapse{data: {'col-header': 'Grade:'}}
+              - if document.reviews.any?
+                %span.js-star-readonly-score{data: {size: 'small', score:  document.overall_score}, title: number_with_precision(document.overall_score, precision: 1)}
 
-          - if logged_in?
-            %td.cell_collapse
-              - if !current_user.has_reviewed_document?(document)
-                = link_to 'Add Review', new_document_review_path( document)
+            - if logged_in?
+              %td.cell_collapse
+                - if !current_user.has_reviewed_document?(document)
+                  = link_to 'Add Review', new_document_review_path( document)
+
+- else
+  %p
+    %em No Results Were Found
+
+- if params[:q].present?
+  .box_gray.text_center
+    %h3 Didn't find what you were looking for?
+
+    %p You can request a contract to be added and reviewed by attorneys on LexLucid.
+
+    %p= link_to 'Request Contract Review', new_request_path, class: 'btn'

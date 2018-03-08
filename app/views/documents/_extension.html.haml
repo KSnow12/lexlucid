@@ -36,7 +36,8 @@
 
   %p This contract has not been reviewed yet.
 
-  - if has_logged_in?
-    = link_to "Add Contract", new_document_url, target: "_blank", class: "btn js-new-document"
-  - else
-    = link_to "Request Attorney Review", root_url, target: "_blank", class: "btn"
+  %p
+    - if has_logged_in?
+      = link_to "Add Contract", new_document_url, target: "_blank", class: "btn js-new-document"
+    - else
+      = link_to "Request Contract Review", new_request_url, target: "_blank", class: "btn js-new-document"

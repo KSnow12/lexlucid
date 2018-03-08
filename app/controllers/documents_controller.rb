@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new(name: params[:name], url: params[:url])
+    @document = Document.new(name: params[:name], url: params[:url], request_id: params[:request_id])
 
     if current_user.has_reviewed_document?(@document) && !current_user.admin?
       redirect_to document_path(@document), notice: "You have already reviewed that"
@@ -93,7 +93,8 @@ class DocumentsController < ApplicationController
         :document_type_id,
         :company_name,
         :auto_accept,
-        :notify_on_changes
+        :notify_on_changes,
+        :request_id
       )
     end
 end
