@@ -10,7 +10,7 @@
         %table
           %tr
             %td
-              %a.media_xs_show.remove_border_bottom{href: '/'}
+              %a.media_xs_show{href: '/'}
                 %img.app_header_logo{src: asset_path('lexlucid-logo-vector.svg')}
 
             %td.media_xs_text_right{style: 'vertical-align:middle;'}
@@ -23,7 +23,7 @@
     .home_header.media_xs_text_center
       .content_width
         .break_xs
-          %a.media_xs_hide.remove_border_bottom{href: '/'}
+          %a.media_xs_hide{href: '/'}
             %img.home_logo{src: asset_path('lexlucid-logo-vector.svg')}
 
         .home_header_indent
@@ -44,5 +44,34 @@
               %span.sr-only Close
             = msg
         = yield
+
+    / .row_padding_large.bg_gray
+    /   .content_width.text_large
+    /     %h2.remove_margin_top What Is LexLucid?
+    /     .cols_flow_two
+    /       %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    .row_padding_large.bg_yellow
+      .content_width
+        .cols.text_large
+          .col_33
+            %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', target: '_blank'}
+              %img{src: asset_path('lexlucid-chrome-ext-2.gif')}
+
+          .col_66
+            %h2{style: 'margin:0.7em 0 0;'}
+              %span.fa.fa-hand-pointer-o
+              One-Click Reviews
+
+            %p.text_large with the LexLucid Chrome extension
+
+            %p With one-click you&rsquo;ll see attorney contract reviews from LexLucid, without having to leave the site you&rsquo;re browsing.
+
+            %p Consumers can request reviews for new  contracts, while attorneys can add new contracts or review existing ones.
+
+            %p
+              = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn', target: '_blank' do
+                %span.fa.fa-fw.fa-lg.fa-arrow-circle-right
+                Get Chrome Extension
 
     = render partial: 'layouts/footer'

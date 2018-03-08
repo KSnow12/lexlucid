@@ -73,6 +73,12 @@ hr
 .text_red
   color: $app-red
 
+.bg_yellow
+  background: $app-yellow
+
+.bg_black
+  background: $app-black
+
 .bg_blue
   background: $app-blue
 
@@ -95,7 +101,7 @@ hr
   background: $app-gray //rgba(0,0,0,0.10)
 
 .bg_darker_20
-  background: #ced5d9 //darken(#e3e7ea, 5) //rgba(0,0,0,0.20)
+  background: darken($app-gray,6) //rgba(0,0,0,0.20)
 
 @media screen and (min-width: $app-media-xs)
   .border_left

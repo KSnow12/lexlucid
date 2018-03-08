@@ -14,7 +14,7 @@
   background: $app-black
   &:hover, &:active
     border-color: $app-black
-    background: #fff
+    background: transparent
     color: $app-font-color
   @media screen and (min-width: $app-media-xs)
     display: inline-block
@@ -32,3 +32,13 @@
     background: $app-gray-medium
   &:active
     background: $app-gray-dark
+
+.btn_yellow, input.btn_yellow[type="submit"]
+  border: 1px solid transparent
+  background: $app-yellow
+  color: $app-font-color
+  &:hover
+    border: 1px solid transparent
+    background: darken($app-yellow,20)
+  &:active
+    background: darken($app-yellow,30)
