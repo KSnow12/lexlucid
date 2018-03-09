@@ -56,15 +56,31 @@
 
               %p LexLucid is the solution. Certified attorneys grade and review legal contracts, so you can quickly see what you&rsquo;re getting into the next time you agree to the terms. Our reviews put things in plain English, so you can feel confident agreeing to the terms.
 
+    .row_padding_large.bg_darker_20
+      .content_width.text_large
+        .cols
+          .col_33.media_xs_break_small
+            %a{href: 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/'}
+              %img{src: asset_path('glh-denver-pod-album.jpg')}
+
+          .col_66
+            .text_uppercase Featured on Legal Talk Network
+
+            %h2.remove_margin_top= link_to 'Celebrating the Denver Winners of the Global Legal Hackathon', 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/'
+
+            %p.break_medium Listen to the LexLucid team talk about their experience at the Global Legal Hackathon in Denver, Colorado, where they took first place for their project inspired by one of <a href='https://www.lawsitesblog.com/2018/02/hadfield-challenges-global-legal-hackathon-urges-participants-address-problems-worth-solving.html'>Hadfield&rsquo;s challenges</a>.
+
+            <audio style='width:100%;' controls="" preload="none" data-ga-location="; episode" data-ga-featured-episode="" data-ga-slug="/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/">
+            <source src="https://traffic.libsyn.com/sr/episode_429.mp3">
+            <p>Your user agent does not support the HTML5 Audio&nbsp;element.</p>
+            </audio>
+
     .row_padding_large.bg_purple.text_white
       .content_width
         .cols.cols_padding_large.text_large
-          .col_40
-            %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo'}
-              %img{src: asset_path('lexlucid-chrome-ext-2.gif')}
-
-          .col_60
-            %h2{style: 'margin:1.2em 0 0;'}
+          .col_60.media_xs_break_small
+            .break_medium.media_xs_hide
+            %h2{style: 'margin:0;'}
               %span.fa.fa-hand-pointer-o.media_xs_hide
               One-Click Reviews
 
@@ -76,8 +92,14 @@
 
             %p
               = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn btn_yellow' do
-                Get Chrome Extension &nbsp;
-                %span.fa.fa-chevron-circle-right.media_xs_hide
+                Get Chrome Extension
+                %span.media_xs_hide
+                  &nbsp;
+                  %span.fa.fa-chevron-circle-right
+
+          .col_40
+            %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo'}
+              %img{src: asset_path('lexlucid-chrome-ext-2.gif')}
 
     - if !logged_in? && !has_logged_in?
       .row.bg_darker_20
