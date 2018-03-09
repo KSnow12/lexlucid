@@ -24,9 +24,12 @@ a
   color: $app-font-color
   text-decoration: none
   border-bottom: 1px solid currentColor
-  &:hover
+  &:focus
+    outline: 1px dotted
+  &:hover, &:active
     color: $app-red
     border-color: currentColor
+    outline: none
 
 p, blockquote, ul, ol
   margin-bottom: $app-margin-small

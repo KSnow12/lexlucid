@@ -54,13 +54,13 @@
             .cols_flow_two0
               %p We&rsquo;re all guilty of checking the box online, and signing an agreement to terms we haven&rsquo;t read or don&rsquo;t understand.
 
-              %p LexLucid is the solution. Certified attorneys grade and review legal contracts, so you can quickly see what you&rsquo;re getting into the next time you agree to the terms. Our reviews put things in plain english, so you can feel confident agreeing to the terms.
+              %p LexLucid is the solution. Certified attorneys grade and review legal contracts, so you can quickly see what you&rsquo;re getting into the next time you agree to the terms. Our reviews put things in plain English, so you can feel confident agreeing to the terms.
 
-    .row_padding_large.bg_yellow
+    .row_padding_large.bg_purple.text_white
       .content_width
         .cols.cols_padding_large.text_large
           .col_40
-            %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', target: '_blank'}
+            %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo'}
               %img{src: asset_path('lexlucid-chrome-ext-2.gif')}
 
           .col_60
@@ -70,24 +70,23 @@
 
             %p.text_uppercase with the LexLucid Chrome extension
 
-            %p With one-click you&rsquo;ll see attorney contract reviews from LexLucid, without having to leave the site you&rsquo;re browsing.
+            %p Just one-click to see attorney contract reviews from LexLucid, without having to leave the site you&rsquo;re browsing.
 
             %p Consumers can request reviews for new  contracts, while attorneys can add new contracts or review existing ones.
 
             %p
-              = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn' do
+              = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn btn_yellow' do
                 Get Chrome Extension &nbsp;
-                %span.fa.fa-lg.fa-arrow-circle-right.media_xs_hide
+                %span.fa.fa-chevron-circle-right.media_xs_hide
 
     - if !logged_in? && !has_logged_in?
-      .row.bg_black.text_white
+      .row.bg_darker_20
         .content_width.text_large.text_center{style: 'max-width:38em;'}
-          %h2 Are You an Attorney?
+          %h2.remove_margin_top Are You an Attorney?
 
           %p Help consumers stay safe and make better informed decisions by registering and grading contracts on LexLucid.
 
-          %p
-            = link_to 'Register Today', new_user_path, class: 'btn btn_yellow'
+          = link_to 'Register Today', new_user_path, class: 'btn'
 
 
     = render partial: 'layouts/footer'
