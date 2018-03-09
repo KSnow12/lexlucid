@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'pages/terms'
+
+  get 'pages/about'
+
   get 'welcome/index'
 
   root to: "documents#index"
@@ -15,4 +19,7 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   delete '/logout', to: 'users#logout'
   get '/clear', to: 'users#clear'
+
+  get '/terms-of-use', to: 'pages#terms'
+  get '/about', to: 'pages#about'
 end
