@@ -1,23 +1,65 @@
 %footer.footer.text_light
-  .content_width
-    %p
-      = link_to 'https://twitter.com/LexLucid', class: 'remove_border_bottom' do
-        %span.fa.fa-fw.fa-2x.fa-twitter-square
-
-      = link_to 'https://www.facebook.com/lexlucidapp', class: 'remove_border_bottom' do
-        %span.fa.fa-fw.fa-2x.fa-facebook-square
-
-      = link_to 'https://www.instagram.com/lexlucidapp/', class: 'remove_border_bottom' do
-        %span.fa.fa-fw.fa-2x.fa-instagram
-
+  .content_width.text_small
     .cols.break_xl
-      .col_50
-        %p
-          &copy;
-          = Time.now.year
-          LexLucid. <br class='media_xs_show'>All rights reserved.
+      .col_40
+        %table.break_small
+          %tr
+            %td{style: 'vertical-align:middle;padding-right:1em;'}
+              %a{href: 'https://legaltalknetwork.com/global-legal-hackathon-denver/'}
+                %img{src: asset_path('glh-denver-winners.svg'), style: 'width:11.8em;opacity:0.4;'}
+            %td{style: 'vertical-align:middle;padding-left:1em;'}
+              %a{href: 'https://globallegalhackathon.com/'}
+                %img{src: asset_path('glh-logo.svg'), style: 'width:13.3em;opacity:0.4;'}
 
-      .col_50.text_right
-        %p= link_to 'Terms of Use', '#'
+      .col_60
+        .cols
+          .col_30.break_small.border_left
+            %h4.text_bold.break_small.text_uppercase LexLucid
+
+            %ul.remove_bullets.media_xs_cols_flow_two
+              %li= link_to 'Home', root_path
+              - if !logged_in? && !has_logged_in?
+                %li= link_to 'Request Review', new_request_path
+                %li= link_to 'Attorney Registration', new_user_path
+              - if has_logged_in? && !logged_in?
+                %li= link_to 'Attorney Login', '/login'
+              - if logged_in?
+                - if current_user.admin?
+                  %li= link_to 'Document Types', document_types_path
+                  %li= link_to 'Issues', bullet_points_path
+                  %li= link_to 'Users', users_path
+
+                %li= link_to "Add Contract", new_document_path
+                %li= link_to 'Dashboard', current_user
+
+          .col_40.break_small.border_left
+            %h4.text_bold.break_small.text_uppercase Chrome Extension
+
+            %p Get access to one-click reviews with our new extension for Chrome.
+
+            %p
+              = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn' do
+                Get Extension &nbsp;
+                %span.fa.fa-lg.fa-arrow-circle-right
+
+          .col_30.break_small.border_left
+            %h4.text_bold.break_small.text_uppercase Follow Us
+
+            %ul.remove_bullets.text_large.media_xs_cols_flow_two
+              %li
+                = link_to 'https://twitter.com/LexLucid', class: 'remove_border_bottom' do
+                  %span.fa.fa-lg.fa-twitter-square
+                  Twitter
+              %li
+                = link_to 'https://www.facebook.com/lexlucidapp', class: 'remove_border_bottom' do
+                  %span.fa.fa-lg.fa-facebook-square
+                  Facebook
+
+    %p
+      &copy;
+      = Time.now.year
+      LexLucid. <br class='media_xs_show'>All rights reserved.
+
+      = link_to 'Terms of Use', terms_of_use_path
 
     %p.text_small LexLucid is in beta and attorney credentials have not been independently verified by us. The reviews reflected here are the opinions of the individuals providing those reviews only, and have not been thoroughly checked for quality control. If you have any issues with any reviews, please <a href='https://twitter.com/LexLucid' target='blank'>contact us</a>. LexLucid is not a law firm and does not provide legal advice. The reviews provided here are based on general fairness to all consumers, without considering any individual facts. Your facts may vary.  If you wish to understand how a contract applies to you specifically, you should seek independent legal counsel.

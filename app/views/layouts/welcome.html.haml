@@ -45,33 +45,49 @@
             = msg
         = yield
 
-    / .row_padding_large.bg_gray
-    /   .content_width.text_large
-    /     %h2.remove_margin_top What Is LexLucid?
-    /     .cols_flow_two
-    /       %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    .row_padding_large.bg_gray.home_whatis
+      .home_whatis_bg
+      .content_width.text_large
+        .cols
+          .col_60
+            %h2.remove_margin_top What Is LexLucid?
+            .cols_flow_two0
+              %p We&rsquo;re all guilty of checking the box online, and signing an agreement to terms we haven&rsquo;t read or don&rsquo;t understand.
+
+              %p LexLucid is the solution. Certified attorneys grade and review legal contracts, so you can quickly see what you&rsquo;re getting into the next time you agree to the terms. Our reviews put things in plain english, so you can feel confident agreeing to the terms.
 
     .row_padding_large.bg_yellow
       .content_width
-        .cols.text_large
-          .col_33
+        .cols.cols_padding_large.text_large
+          .col_40
             %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', target: '_blank'}
               %img{src: asset_path('lexlucid-chrome-ext-2.gif')}
 
-          .col_66
-            %h2{style: 'margin:0.7em 0 0;'}
-              %span.fa.fa-hand-pointer-o
+          .col_60
+            %h2{style: 'margin:1.2em 0 0;'}
+              %span.fa.fa-hand-pointer-o.media_xs_hide
               One-Click Reviews
 
-            %p.text_large with the LexLucid Chrome extension
+            %p.text_uppercase with the LexLucid Chrome extension
 
             %p With one-click you&rsquo;ll see attorney contract reviews from LexLucid, without having to leave the site you&rsquo;re browsing.
 
             %p Consumers can request reviews for new  contracts, while attorneys can add new contracts or review existing ones.
 
             %p
-              = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn', target: '_blank' do
-                %span.fa.fa-fw.fa-lg.fa-arrow-circle-right
-                Get Chrome Extension
+              = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn' do
+                Get Chrome Extension &nbsp;
+                %span.fa.fa-lg.fa-arrow-circle-right.media_xs_hide
+
+    - if !logged_in? && !has_logged_in?
+      .row.bg_black.text_white
+        .content_width.text_large.text_center{style: 'max-width:38em;'}
+          %h2 Are You an Attorney?
+
+          %p Help consumers stay safe and make better informed decisions by registering and grading contracts on LexLucid.
+
+          %p
+            = link_to 'Register Today', new_user_path, class: 'btn btn_yellow'
+
 
     = render partial: 'layouts/footer'
