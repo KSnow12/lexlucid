@@ -46,6 +46,12 @@
   .box_gray.text_center
     %h3 Didn't find what you were looking for?
 
-    %p You can request a contract to be added and reviewed by attorneys on LexLucid.
+    - if current_user
+      %p Add a new contract, then you and other attorneys can review it on LexLucid.
 
-    %p= link_to 'Request Contract Review', new_request_path, class: 'btn'
+      %p= link_to 'Add Contract', new_document_path(name: params[:q]), class: 'btn'
+
+    - else
+      %p You can request a contract to be added and reviewed by attorneys on LexLucid.
+
+      %p= link_to 'Request Contract Review', new_request_path(name: params[:q]), class: 'btn'
