@@ -18,6 +18,7 @@
 
             %ul.remove_bullets.media_xs_cols_flow_two
               %li= link_to 'Home', root_path
+              %li= link_to 'About', about_path
               - if !logged_in? && !has_logged_in?
                 %li= link_to 'Request Review', new_request_path
                 %li= link_to 'Attorney Registration', new_user_path

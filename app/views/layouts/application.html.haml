@@ -22,15 +22,61 @@
         %nav.header_nav.js_header_mobile_nav_button
           = render partial: 'layouts/navbar'
 
-    .app_content
-      .content_width
-        - flash.each do |name, msg|
-          %div{class: "alert alert-#{name.to_sym == :error ? 'danger' : 'success'} alert-dismissable", role: "alert"}
-            %button.close{type: "button", data: {dismiss: "alert"} }
-              %span{aria: {hidden: "true"} } &times;
-              %span.sr-only Close
-            = msg
+    - if current_page?('/about')
+      = yield
 
-        = yield
+    - else
+      .app_content
+        .content_width
+          - flash.each do |name, msg|
+            %div{class: "alert alert-#{name.to_sym == :error ? 'danger' : 'success'} alert-dismissable", role: "alert"}
+              %button.close{type: "button", data: {dismiss: "alert"} }
+                %span{aria: {hidden: "true"} } &times;
+                %span.sr-only Close
+              = msg
+
+          - if request.path.include?('/documents') && !request.path.include?('/new') && !request.path.include?('/edit')
+
+            .cols.cols_padding_large
+              .col_75
+                = yield
+
+              .col_25
+                .box_gray.break_medium.bg_purple.text_small.text_white
+                  %h4
+                    %span.fa.fa-hand-pointer-o
+                    One-Click Reviews
+
+                  %p The LexLucid Chrome extension puts you one-click away from seeing reviews or adding new ones, without leaving the site you&rsquo;re browsing.
+
+                  = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn btn_yellow' do
+                    Get Extension &nbsp;
+                    %span.fa.fa-chevron-circle-right
+
+                - if !logged_in? && !has_logged_in?
+                  .box_gray.break_medium.text_small
+                    %h4
+                      %span.fa.fa-institution
+                      Attorneys
+
+                    %p Help consumers stay safe and make better informed decisions by registering and grading contracts on LexLucid.
+
+                    = link_to 'Register Today', new_user_path, class: 'btn'
+
+                .box.break_medium.text_small
+                  %h4 Follow LexLucid
+
+                  %ul.remove_bullets.media_xs_cols_flow_two
+                    %li
+                      = link_to 'https://twitter.com/LexLucid', class: 'remove_border_bottom' do
+                        %span.fa.fa-lg.fa-twitter-square
+                        Twitter
+                    %li
+                      = link_to 'https://www.facebook.com/lexlucidapp', class: 'remove_border_bottom' do
+                        %span.fa.fa-lg.fa-facebook-square
+                        Facebook
+
+          - else
+            = yield
 
     = render partial: 'layouts/footer'

@@ -1,22 +1,17 @@
 = link_to about_path, class: active_page?("pages#about") ? 'active' : '' do
-  %span.fa.fa-info-circle
-  &nbsp;About
+  About
 
 - if !logged_in? && !has_logged_in?
   = link_to new_user_path, class: active_page?("users") ? 'active' : '' do
-    %span.fa.fa-sign-in
-    &nbsp;Attorney Registration
+    Attorney Registration
 
 - if has_logged_in? && !logged_in?
   = link_to '/login', class: active_page?("users") ? 'active' : '' do
-    %span.fa.fa-sign-in
-    &nbsp;Attorney Login
+    Attorney Login
 
 - if logged_in?
   = link_to new_document_path, class: active_page?("documents#new", "documents#create") ? 'active' : '' do
-    %span.fa.fa-plus-circle
-    &nbsp;Add Contract
+    Add Contract
 
   = link_to current_user, class: active_page?("users#show") && current_user.id == @user.id ? 'active' : '' do
-    %span.fa.fa-chevron-circle-right
-    &nbsp;Dashboard
+    Dashboard

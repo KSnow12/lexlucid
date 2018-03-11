@@ -1,13 +1,3 @@
-.float_right
-  - if logged_in?
-    = link_to edit_document_path(@document), class: 'btn' do
-      %span.fa.fa-fw.fa-pencil
-      Edit Document
-  - if logged_in? && !current_user.has_reviewed_document?(@document)
-    = link_to new_document_review_path(@document), class: 'btn' do
-      %span.fa.fa-fw.fa-plus
-      Add Review
-
 %h1{style: 'margin-bottom:0.2em'}= @document.name
 
 - if @document.reviews.any?
@@ -18,6 +8,17 @@
   %ul.inline_list.text_small.break_medium{style: 'vertical-align:top;'}
     %li #{number_with_precision(@document.overall_score, precision: 1)} Stars
     %li #{@document.reviews.count} Attorney #{"Review".pluralize(@document.reviews.count)}
+
+- if logged_in?
+  .break_small
+    - if !current_user.has_reviewed_document?(@document)
+      = link_to new_document_review_path(@document), class: 'btn' do
+        %span.fa.fa-fw.fa-plus
+        Add Review
+
+    = link_to edit_document_path(@document), class: 'btn btn_gray' do
+      %span.fa.fa-fw.fa-pencil
+      Edit Document
 
 %table.table_padded_right.text_small.break_large
   %tr
