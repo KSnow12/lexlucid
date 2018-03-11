@@ -4,7 +4,9 @@
     = render partial: 'layouts/google_analytics'
     = render partial: 'layouts/head'
 
-  %body{style: 'padding-top:0;'}
+  %body
+    = render partial: 'layouts/navbar_admin'
+
     %header.app_header
       .content_width
         %table
@@ -47,28 +49,37 @@
 
     .row_padding_large.bg_gray.home_whatis
       .home_whatis_bg
-      .content_width.text_large
+      .content_width.text_large.media_xs_text_base_size
         .cols
           .col_60
-            %h2.remove_margin_top What Is LexLucid?
+            %h2.remove_margin_top
+              What Is LexLucid
+              %span.fa.fa-question-circle-o
+
             .cols_flow_two0
               %p We&rsquo;re all guilty of checking the box online, and signing an agreement to terms we haven&rsquo;t read or don&rsquo;t understand.
 
               %p LexLucid is the solution. Certified attorneys grade and review legal contracts, so you can quickly see what you&rsquo;re getting into the next time you agree to the terms. Our reviews put things in plain English, so you can feel confident agreeing to the terms.
 
+              = link_to new_user_path, class: 'btn' do
+                About LexLucid &nbsp;
+                %span.fa.fa-chevron-circle-right
+
     .row_padding_large.bg_darker_20
-      .content_width.text_large
+      .content_width.text_large.media_xs_text_base_size
         .cols
           .col_33.media_xs_break_small
             %a{href: 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/'}
               %img{src: asset_path('glh-denver-pod-album.jpg')}
 
           .col_66
-            .text_uppercase Featured on Legal Talk Network
+            .text_uppercase
+              %span.fa.fa-microphone
+              &nbsp;Featured on Legal Talk Network
 
             %h2.remove_margin_top= link_to 'Celebrating the Denver Winners of the Global Legal Hackathon', 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/'
 
-            %p.break_medium Listen to the LexLucid team talk about their experience at the Global Legal Hackathon in Denver, Colorado, where they took first place for their project inspired by one of <a href='https://www.lawsitesblog.com/2018/02/hadfield-challenges-global-legal-hackathon-urges-participants-address-problems-worth-solving.html'>Hadfield&rsquo;s challenges</a>.
+            %p.break_medium.media_xs_break_small Listen to the LexLucid team talk about their experience at the Global Legal Hackathon in Denver, Colorado, where they took first place for their project inspired by one of <a href='https://www.lawsitesblog.com/2018/02/hadfield-challenges-global-legal-hackathon-urges-participants-address-problems-worth-solving.html'>Hadfield&rsquo;s challenges</a>.
 
             <audio style='width:100%;' controls="" preload="none">
             <source src="https://traffic.libsyn.com/sr/episode_429.mp3">
@@ -77,7 +88,7 @@
 
     .row_padding_large.bg_purple.text_white
       .content_width
-        .cols.cols_padding_large.text_large
+        .cols.cols_padding_large.text_large.media_xs_text_base_size
           .col_60.media_xs_break_small
             .break_medium.media_xs_hide
             %h2{style: 'margin:0;'}
@@ -92,10 +103,8 @@
 
             %p
               = link_to 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo', class: 'btn btn_yellow' do
-                Get Chrome Extension
-                %span.media_xs_hide
-                  &nbsp;
-                  %span.fa.fa-chevron-circle-right
+                Get Chrome Extension &nbsp;
+                %span.fa.fa-chevron-circle-right
 
           .col_40
             %a{href: 'https://chrome.google.com/webstore/detail/lexlucid/cfcdiophfjnmjnelkmgdkeejfabenhpo'}
@@ -103,12 +112,14 @@
 
     - if !logged_in? && !has_logged_in?
       .row.bg_darker_20
-        .content_width.text_large.text_center{style: 'max-width:38em;'}
+        .content_width.text_large.media_xs_text_base_size.text_center{style: 'max-width:38em;'}
           %h2.remove_margin_top Are You an Attorney?
 
           %p Help consumers stay safe and make better informed decisions by registering and grading contracts on LexLucid.
 
-          = link_to 'Register Today', new_user_path, class: 'btn'
+          = link_to new_user_path, class: 'btn' do
+            Register Today &nbsp;
+            %span.fa.fa-sign-in
 
 
     = render partial: 'layouts/footer'

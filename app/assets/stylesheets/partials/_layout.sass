@@ -26,6 +26,27 @@ body
   @media screen and (min-width: $app-media-xs)
     padding: 4.9em 0 8em
 
+.admin_navbar
+  margin-left: -#{$app-media-xs-padding}
+  .js_admin_navbar_toggle
+    display: none
+  a
+    display: block
+    width: 100%
+    padding: 0.65em 1em
+    &.active
+      background: rgba(255,255,255,0.18)
+  @media screen and (min-width: $app-media-xs)
+    margin-left: 0
+    .js_admin_navbar_toggle
+      display: block
+    a
+      display: inline-block
+      width: auto
+      border: none
+      &.active
+        border: none
+
 .app_header
   overflow: hidden
   background: $app-yellow

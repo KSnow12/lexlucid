@@ -1,0 +1,14 @@
+- if logged_in?
+  - if current_user.admin?
+    .admin_navbar.bg_black.text_white.text_small
+      .content_width{style: 'overflow:hidden;'}
+        .float_left
+          %a{href: '#', data: {toggle: '.js_admin_navbar_toggle'}}
+            %span.fa.fa-sliders
+            &nbsp; ADMIN
+
+        .float_right.js_admin_navbar_toggle
+          = link_to 'Document Types', document_types_path, class: active_page?("document_types") ? 'active' : ''
+          = link_to 'Issues', bullet_points_path, class: active_page?("bullet_points") ? 'active' : ''
+          = link_to 'Users', users_path, class: active_page?("users#index") ? 'active' : ''
+          = link_to 'Logout', logout_path, data: {method: :delete, "no-turbolink" => true}
