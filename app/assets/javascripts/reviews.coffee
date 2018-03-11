@@ -37,15 +37,24 @@ $(document).on 'ready turbolinks:load', (e) ->
 
     #disable
     valueSelected = $(this).find('option:selected').val()
-    $others.find("option[value='#{valueSelected}']").prop("disabled",true)
-    $(this).data('previous-value', valueSelected)
-
-
+    if valueSelected != ''
+      $others.find("option[value='#{valueSelected}']").prop("disabled",true)
+      $(this).data('previous-value', valueSelected)
+    else
+      #select -Select-again, clear the stars
+      console.log ('Clear Star')
+      #get parent
+      $parent = $(this).closest('.panel-body')
+      #clear the stars
+      $parent.find('.js-star-score').starRating('setRating', 0)
+      #clear the hidden
+      $parent.find('.js-input-score').val(null)
 
   $(".js-bullet-point").each ->
     $others = $('.js-bullet-point').not("#"+$(this).attr("id"))
 
     #disable
     valueSelected = $(this).find('option:selected').val()
-    $others.find("option[value='#{valueSelected}']").prop("disabled",true)
-    $(this).data('previous-value', valueSelected)
+    if valueSelected != ''
+      $others.find("option[value='#{valueSelected}']").prop("disabled",true)
+      $(this).data('previous-value', valueSelected)
