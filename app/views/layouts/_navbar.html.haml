@@ -1,3 +1,10 @@
+- if logged_in?
+  = link_to current_user, class: active_page?("users#show") && current_user.id == @user.id ? 'active' : '' do
+    Dashboard
+
+  = link_to new_document_path, class: active_page?("documents#new", "documents#create") ? 'active' : '' do
+    Add Contract
+
 = link_to about_path, class: active_page?("pages#about") ? 'active' : '' do
   About
 
@@ -8,10 +15,3 @@
 - if has_logged_in? && !logged_in?
   = link_to '/login', class: active_page?("users") ? 'active' : '' do
     Attorney Login
-
-- if logged_in?
-  = link_to new_document_path, class: active_page?("documents#new", "documents#create") ? 'active' : '' do
-    Add Contract
-
-  = link_to current_user, class: active_page?("users#show") && current_user.id == @user.id ? 'active' : '' do
-    Dashboard

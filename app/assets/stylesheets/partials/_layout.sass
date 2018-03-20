@@ -193,11 +193,19 @@ body
     position: absolute
     top: 0
     bottom: 0
-    left: 60%
+    left: 36%
     right: 0
     z-index: -1
-    opacity: 0.25
+    opacity: 0.31
     filter: grayscale(100%)
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background: linear-gradient(to right, $app-gray-light, rgba(255,255,255,0))
 
   .about_mission
     background: url(asset-path('LexLucid-thin.jpg')) no-repeat center left
@@ -205,11 +213,19 @@ body
     position: absolute
     top: 0
     bottom: 0
-    right: 50%
+    right: 30%
     left: 0
     z-index: -1
-    opacity: 0.25
+    opacity: 0.35
     filter: grayscale(100%)
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background: linear-gradient(to left, $app-gray-light, rgba(255,255,255,0))
 
 .footer
   padding-top: 2rem

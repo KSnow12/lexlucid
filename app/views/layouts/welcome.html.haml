@@ -66,14 +66,22 @@
     .row_padding_large.bg_darker_20
       .content_width.text_large.media_xs_text_base_size
         .cols
-          .col_33.media_xs_break_small
+          .col_33.media_xs_hide
             %a{href: 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/'}
               %img{src: asset_path('glh-denver-pod-album.jpg')}
 
           .col_66
-            .text_uppercase
-              %span.fa.fa-microphone
-              &nbsp;Featured on Legal Talk Network
+            .media_xs_cols.media_xs_break_small
+              .media_xs_col_33.media_xs_show
+                %a{href: 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/'}
+                  %img{src: asset_path('glh-denver-pod-album.jpg')}
+
+              .media_xs_col_66
+                .media_xs_show.break_small
+
+                .text_uppercase
+                  %span.fa.fa-microphone
+                  &nbsp;Featured on Legal Talk Network
 
             %h2.remove_margin_top= link_to 'Celebrating the Denver Winners of the Global Legal Hackathon', 'https://legaltalknetwork.com/podcasts/special-reports/2018/03/celebrating-the-denver-winners-of-the-global-legal-hackathon/', class: 'remove_border_bottom'
 
