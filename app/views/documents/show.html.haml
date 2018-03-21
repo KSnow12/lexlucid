@@ -66,7 +66,7 @@
   .box.media_xs_bleed.break_medium{id: "issue-#{rating.bullet_point_id}"}
     %h3= rating.bullet_point.human_title
 
-    %h4= simple_format rating.bullet_point.human_description
+    = simple_format rating.bullet_point.human_description
 
     .break_small
       %span.js-star-readonly-score{data: {score: rating.avg_score, size: 'small'}}
