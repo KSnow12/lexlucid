@@ -11,14 +11,15 @@
   text-decoration: none
   text-align: center
   line-height: 1
-  background: $app-black
+  background: $app-purple
   &:hover
-    border-color: $app-black
-    background: transparent
-    color: $app-font-color
-  &:focus, &:active
-    background: rgba(0,0,0,0.3)
+    background: $app-purple-light
     border-color: transparent
+    color: #fff
+  &:focus, &:active
+    background: $app-purple
+    border-color: transparent
+    color: #fff
   @media screen and (min-width: $app-media-xs)
     display: inline-block
     width: auto
@@ -30,11 +31,12 @@
   border: 1px solid transparent
   background: rgba(0,0,0,0.2)
   color: $app-font-color
-  // &:hover
-  //   border: 1px solid transparent
-  //   background: rgba(0,0,0,0.4)
-  // &:active
-  //   background: rgba(0,0,0,0.4)
+  &:hover
+    background: rgba(0,0,0,0.35)
+    color: $app-font-color
+  &:active
+    background: rgba(0,0,0,0.2)
+    color: $app-font-color
 
 .btn_yellow, input.btn_yellow[type="submit"]
   border: 1px solid transparent
@@ -43,5 +45,7 @@
   &:hover
     border: 1px solid transparent
     background: darken($app-yellow,20)
+    color: $app-font-color
   &:active
     background: darken($app-yellow,30)
+    color: $app-font-color
