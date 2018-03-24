@@ -77,7 +77,7 @@ class UsersController < ApplicationController
         cookies.permanent[:email] = @user.email
         redirect_to return_to_path || documents_path
       else
-        flash[:error] = "Bad username or password"
+        flash.now[:error] = "Bad username or password"
       end
     end
   end
