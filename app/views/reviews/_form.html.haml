@@ -16,7 +16,7 @@
       %tr.form-group
         %td.cell_collapse= rating_form.label :bullet_point_id, "Issue", class: "col-sm-2 control-label"
         %td.col-sm-10
-          = rating_form.collection_select :bullet_point_id, BulletPoint.order(:human_title), :id, :human_title, {prompt: raw("&mdash; Select &mdash;")}, class: "form-control js-bullet-point"
+          = rating_form.object.bullet_point.human_title
 
       %tr.form-group
         %td.cell_collapse= rating_form.label :score, 'Grade', class: 'col-sm-2 control-label'

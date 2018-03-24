@@ -25,7 +25,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @document = @review.document
-    build_review_children
   end
 
   # POST /reviews
@@ -46,7 +45,6 @@ class ReviewsController < ApplicationController
         format.html { redirect_to @document, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
-        build_review_children
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
@@ -61,10 +59,8 @@ class ReviewsController < ApplicationController
         format.html { redirect_to user_path(@review.user_id), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
-        build_review_children
         format.html {
           @document = @review.document
-          build_review_children
           render :edit
         }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -95,9 +91,8 @@ class ReviewsController < ApplicationController
     end
 
     def build_review_children
-      current_rating_count = @review.ratings.size
-      (5 - current_rating_count).times do
-        @review.ratings.build
+      @document.reviewables.order(:position).each do |reviewable|
+        @review.ratings.build(bullet_point: reviewable.bullet_point)
       end
     end
 
