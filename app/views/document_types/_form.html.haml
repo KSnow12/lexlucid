@@ -8,6 +8,14 @@
     %tr
       %td
       %td
+        %ul
+          = f.collection_check_boxes(:bullet_point_ids, BulletPoint.all.order(:human_title), :id, :human_title, checked: @document_type.bullet_points.map(&:id)) do |bp|
+            %li
+              = bp.check_box
+              = bp.label
+    %tr
+      %td
+      %td
         = f.submit class: 'btn text_capitalize'
 
         = link_to document_types_path, class: 'btn btn_gray' do

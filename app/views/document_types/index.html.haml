@@ -8,12 +8,18 @@
 %table.table_index
   %thead
     %tr
-      %th{colspan: '2'} Document Type
+      %th Document Type
+      %th Issues
+      %th
 
   %tbody
     - @document_types.each do |document_type|
       %tr
         %td{data: {'col-header': 'Type:'}}= document_type.category
+        %td
+          %ul
+            - document_type.bullet_points.each do |bp|
+              %li= bp.human_title
         %td.cell_collapse
           %ul.inline_list
             %li= link_to 'Edit', edit_document_type_path(document_type)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307215339) do
+ActiveRecord::Schema.define(version: 20180324021713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 20180307215339) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviewables", force: :cascade do |t|
+    t.bigint "document_type_id", null: false
+    t.bigint "bullet_point_id", null: false
+    t.integer "position", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bullet_point_id"], name: "index_reviewables_on_bullet_point_id"
+    t.index ["document_type_id"], name: "index_reviewables_on_document_type_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -94,6 +104,8 @@ ActiveRecord::Schema.define(version: 20180307215339) do
   add_foreign_key "documents", "document_types"
   add_foreign_key "ratings", "bullet_points"
   add_foreign_key "ratings", "reviews"
+  add_foreign_key "reviewables", "bullet_points"
+  add_foreign_key "reviewables", "document_types"
   add_foreign_key "reviews", "documents"
   add_foreign_key "reviews", "users"
 end
