@@ -57,6 +57,10 @@ chrome.runtime.onInstalled.addListener(function() {
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostContains: 'help.instagram'},
           }),
+          //just to match tryadelinaskin tos page
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostContains: 'tryadelinaskin'},
+          }),
         ],
         // And shows the extension's page action.
         actions: [ new chrome.declarativeContent.ShowPageAction() ]
